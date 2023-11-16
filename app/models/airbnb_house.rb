@@ -1,2 +1,0 @@
-class AirbnbHouse < ApplicationRecord
-end
