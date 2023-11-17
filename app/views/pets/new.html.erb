@@ -1,0 +1,18 @@
+<div class="container mt-3">
+  <p><strong>New Pet</strong></p>
+
+  <%= simple_form_for(@pet) do |form| %>
+
+    <div class="form-actions">
+      <%= form.input :name %>
+      <%= form.input :age %>
+      <%= form.input :size %>
+      <%= form.input :breed %>
+      <%= form.input :details %>
+
+      <%= form.button :submit, 'Create Pet', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <%# <%= link_to 'Back', root, class: 'btn btn-secondary mt-2' %>
+</div>

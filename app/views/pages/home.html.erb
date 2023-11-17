@@ -1,2 +1,17 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Popular pet-friendly places</h1>
+  <ul>
+  <% @city.first(5).each do |city| %>
+    <li> <%=  city.local %> </li>
+  <% end %>
+  </ul>
+</div>
+
+<div class="container">
+  <h2>Most upvoted activities</h2>
+  <ul>
+    <% @activities.first(5).each do |a| %>
+      <li><strong> <%= a.title %></strong> </li><p><%= a.details %></p>
+    <% end %>
+  </ul>
+</div>

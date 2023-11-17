@@ -1,7 +1,65 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
+require "faker"
+
+# puts "Destroy cities and places"
+# City.destroy_all
+# Place.destroy_all
+Activity.destroy_all
+
+print "Creating cities"
+
+
+2.times do
+  City.create(
+    local: Faker::Address.city
+  )
+end
+
+
+puts "Creating places"
+
+2.times do
+  place = Place.new(
+    user_id: 1,
+    city_id: rand(11..50),
+    title: Faker::Lorem.words(number: 3).join(' '),
+    subtitle: Faker::Lorem.sentence,
+    address: Faker::Address.full_address,
+    pricing: Faker::Commerce.price,
+    rooms: rand(1..5),
+    details: Faker::Lorem.paragraph,
+  )
+  place.save!
+end
+
+puts "Creating pets!"
+
+10.times do
+  Pet.create(
+    name: Faker::Creature::Dog.name,
+    age: rand(1..15),
+    size: ['Small', 'Medium', 'Large'].sample,
+    breed: Faker::Creature::Dog.breed,
+    details: Faker::Lorem.sentence,
+    user_id: 1
+  )
+end
+
+puts "Creating activities"
+
+# db/seeds/activities.rb
+
+require 'faker'
+
+10.times do
+  activity = Activity.new(
+    user_id: 1,
+    details: Faker::Lorem.paragraph,
+    city_id: rand(11..50),
+    title: Faker::Lorem.words(number: 3).join(' '),
+    subtitle: Faker::Lorem.sentence,
+    address: Faker::Address.full_address
+  )
+  activity.save!
+end
+
+puts "Done!"
