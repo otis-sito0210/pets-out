@@ -10,6 +10,11 @@ class PlacesController < ApplicationController
     @place.save!
   end
 
+  def index
+    @city = City.find(params[:city_id])
+    @places = @city.places
+  end
+
   private
 
   def place_params

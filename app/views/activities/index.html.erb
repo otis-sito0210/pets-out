@@ -1,0 +1,13 @@
+<div class="container mt-3">
+
+<h1> Atividades na cidade de <%= @city.local %></h1>
+  <% @activities.each do |activity| %>
+
+    <h2> <%= activity.title %> </h2>
+    <h4> <%= activity.subtitle %> </h4>
+    <p> <%= activity.address %> </p>
+    <p> <%= activity.details %> </p>
+
+  <%= link_to "Make appointment",  new_appointment_path(trip_id: @trip.id, activity_id: activity.id), class: "btn btn-primary" %>
+  <% end %>
+</div>

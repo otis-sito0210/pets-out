@@ -1,0 +1,17 @@
+<div class="container mt-3">
+
+<% @trips.each do |trip| %>
+  <h1> Trip to <%= trip.place.city.local %> </h1>
+
+  <h2> <%= trip.place.title %> </h2>
+  <h4> <%= trip.place.subtitle %> </h4>
+  <p> <%= trip.place.address %> </p>
+
+  <p> Starts in <%= trip.start_date %>  </p>
+  <p> Ends in <%= trip.end_date %>  </p>
+
+
+<% end %>
+
+
+</div>

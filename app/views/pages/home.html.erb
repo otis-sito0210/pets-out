@@ -1,10 +1,12 @@
 <div class="container">
   <h1>Popular pet-friendly places</h1>
-  <ul>
-  <% @city.first(5).each do |city| %>
-    <li> <%=  city.local %> </li>
+  <ol>
+  <% @cities.first(5).each do |city| %>
+    <li>
+      <%=  link_to city.local, city_places_path(city.id) %>
+    </li>
   <% end %>
-  </ul>
+  </ol>
 </div>
 
 <div class="container">

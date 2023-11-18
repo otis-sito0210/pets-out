@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_16_235229) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_18_143437) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,12 +30,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_235229) do
   create_table "appointments", force: :cascade do |t|
     t.integer "date"
     t.integer "hour"
-    t.bigint "user_id", null: false
-    t.bigint "place_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["place_id"], name: "index_appointments_on_place_id"
-    t.index ["user_id"], name: "index_appointments_on_user_id"
+    t.bigint "trip_id"
+    t.bigint "activity_id"
+    t.index ["activity_id"], name: "index_appointments_on_activity_id"
+    t.index ["trip_id"], name: "index_appointments_on_trip_id"
   end
 
   create_table "cities", force: :cascade do |t|
@@ -81,6 +81,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_235229) do
     t.index ["user_id"], name: "index_places_on_user_id"
   end
 
+  create_table "trips", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "place_id", null: false
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["place_id"], name: "index_trips_on_place_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -95,11 +106,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_16_235229) do
 
   add_foreign_key "activities", "cities"
   add_foreign_key "activities", "users"
-  add_foreign_key "appointments", "places"
-  add_foreign_key "appointments", "users"
+  add_foreign_key "appointments", "activities"
+  add_foreign_key "appointments", "trips"
   add_foreign_key "meetings", "activities", column: "activities_id"
   add_foreign_key "meetings", "users"
   add_foreign_key "pets", "users"
   add_foreign_key "places", "cities"
   add_foreign_key "places", "users"
+  add_foreign_key "trips", "places"
+  add_foreign_key "trips", "users"
 end

@@ -1,4 +1,5 @@
 class Appointment < ApplicationRecord
-  belongs_to :user
-  belongs_to :place
+  belongs_to :activity
+
+  has_many :trips
 end

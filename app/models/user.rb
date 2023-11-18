@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :pets
+  has_many :places
+  has_many :activities
+  has_many :trips
+  has_many :appointments, through: :trips
 end

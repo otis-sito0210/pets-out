@@ -5,7 +5,18 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :places
-  resources :activities
+
+  resources :cities do
+    resources :places
+  end
+
+  resources :trips, only: [:new, :create] do
+    resources :activities, only: [:index]
+  end
+
+  resources :appointments
+
+  get "my_trips", to: "trips#my_trips_index", as: "my_trips"
+
   resources :pets
 end

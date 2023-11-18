@@ -1,0 +1,14 @@
+<div class="container mt-3">
+
+  <%= simple_form_for(@appointment) do |form| %>
+
+    <div class="form-actions">
+      <%= form.input :date, as: :date, html5: true %>
+      <%= form.input :hour %>
+      <%= form.input :trip_id, input_html: { value: @trip.id }, wrapper_html: { class: "d-none"} %>
+      <%= form.input :activity_id, input_html: { value: @activity.id }, wrapper_html: { class: "d-none"} %>
+
+      <%= form.button :submit, 'Set appointment', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
