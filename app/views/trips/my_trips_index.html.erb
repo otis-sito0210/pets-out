@@ -10,8 +10,11 @@
   <p> Starts in <%= trip.start_date %>  </p>
   <p> Ends in <%= trip.end_date %>  </p>
 
-
+ <h4> Your appointments:</h4>
+ <% trip.appointments.each do |appointment| %>
+      <p> <%= appointment.activity.title %> </p>
+      <p> <%= appointment.hour %> </p>
+      <p> <%= appointment.date %> </p>
+    <% end %>
 <% end %>
-
-
 </div>
