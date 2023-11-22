@@ -1,12 +1,19 @@
 class ActivitiesController < ApplicationController
   def new
     @activity = Activity.new()
+    @city = City.find(params[:city_id])
   end
 
   def create
+    @city = City.find(params[:city_id])
     @activity = Activity.new(activity_params)
+    @activity.city = @city
     @activity.user = current_user
-    @activity.save!
+    if @activity.save!
+      redirect_to city_places_path(@city)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def index
@@ -22,8 +29,13 @@ class ActivitiesController < ApplicationController
 
   def update
     @activity = Activity.find(params[:id])
-    @activity.update(activity_params)
+    if @activity.update(activity_params)
+      redirect_to city_places_path(@city)
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
+
 
   private
   def activity_params

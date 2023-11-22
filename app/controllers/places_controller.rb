@@ -20,12 +20,6 @@ class PlacesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
-    # if params[:photos]
-    #   params[:photos].each do |photo|
-    #     @place.photos.attach(photo)
-    #   end
-    # end
   end
 
   def edit
@@ -39,16 +33,7 @@ class PlacesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
-
-    # if params[:photos]
-    #   params[:photos].each do |photo|
-    #     @place.photos.attach(photo)
-    #   end
-    # end
   end
-
-
-
 
   private
 

@@ -1,11 +1,37 @@
-<div class="container">
+<%# banner %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://plus.unsplash.com/premium_photo-1663091202352-a19c438ca22d?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+  <div class="container">
+    <h1>Pets out! </h1>
+    <p>Travel assistant for amazing trips with your pets</p>
+    <div class="col-sm-8 my-3">
+      <%= form_with url: root_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+                            params[:query],
+                            class: "form-control",
+                            placeholder: "Type a city to visit with your pet!"
+        %>
+        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container mt-3">
   <h1>Popular pet-friendly places</h1>
   <ol>
-  <% @cities.first(5).each do |city| %>
-    <li>
-      <%=  link_to city.local, city_places_path(city.id) %>
-    </li>
-  <% end %>
+    <% @cities.first(5).each do |city| %>
+      <li>
+        <%= link_to city.local, city_places_path(city.id) %>
+        <%= cl_image_tag city.photo.key, height: 400, width: 500, crop: :fill if city.photo.attached? %>
+        <ul>
+      <h4> Main activities: </h4>
+          <% city.activities.first(2).each do |a| %>
+            <li><strong><%= a.title %></strong></li>
+            <p><%= a.details %></p>
+          <% end %>
+        </ul>
+      </li>
+    <% end %>
   </ol>
 </div>
 
@@ -13,7 +39,9 @@
   <h2>Most upvoted activities</h2>
   <ul>
     <% @activities.first(5).each do |a| %>
-      <li><strong> <%= a.title %></strong> </li><p><%= a.details %></p>
+      <li><strong><%= a.title %></strong></li>
+      <p><%= a.details %></p>
+      <p>in <%= a.city.local %></p>
     <% end %>
   </ul>
 </div>

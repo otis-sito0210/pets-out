@@ -8,7 +8,11 @@ class AppointmentsController < ApplicationController
 
   def create
     @appointment = Appointment.new(appointment_params)
-    @appointment.save!
+    if @appointment.save!
+      redirect_to my_trips_path, notice: 'Trip was successfully updated.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
@@ -16,4 +20,5 @@ class AppointmentsController < ApplicationController
   def appointment_params
     params.require(:appointment).permit(:date, :hour, :trip_id, :activity_id)
   end
+  
 end

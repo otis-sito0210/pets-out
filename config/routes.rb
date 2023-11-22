@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   resources :cities do
     resources :places, only: [:new, :create, :index]
+    resources :activities, only: [:new, :create]
   end
 
   resources :trips, only: [:new, :create] do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
 
   resources :appointments
   resources :places, only: [:edit, :update]
+
 
   get "my_trips", to: "trips#my_trips_index", as: "my_trips"
 

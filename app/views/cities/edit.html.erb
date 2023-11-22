@@ -1,0 +1,14 @@
+<div class="container mt-3">
+  <p><strong>Edit City</strong></p>
+
+  <%= simple_form_for(@city) do |form| %>
+
+    <div class="form-actions">
+      <%= form.input :local %>
+      <%= form.input :photo, as: :file %>
+
+      <%= form.button :submit, 'Edit City', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+</div>

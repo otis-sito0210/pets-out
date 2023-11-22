@@ -1,15 +1,14 @@
 <div class="container mt-3">
   <p><strong>New Activity</strong></p>
 
-  <%= simple_form_for(@activity) do |form| %>
+  <%= simple_form_for([@city, @activity]) do |form| %>
 
     <div class="form-actions">
       <%= form.input :title %>
       <%= form.input :subtitle %>
       <%= form.input :address %>
-      <%= form.input :city_id %>
       <%= form.input :details %>
-      <%= f.input :photo, as: :file %>
+      <%= form.input :photo, as: :file %>
 
       <%= form.button :submit, 'Create Activity', class: 'btn btn-primary' %>
     </div>
