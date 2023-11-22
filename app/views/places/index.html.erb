@@ -15,7 +15,7 @@
 
 
     <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn btn-primary mt-3" %>
-   <%= link_to "Edit Place", edit_city_place_path(@city, place.id), class: "btn btn-secondary mt-3" %>
+   <%= link_to "Edit Place", edit_place_path(place), class: "btn btn-secondary mt-3" %>
   <% end %>
   </ol>
 </div>

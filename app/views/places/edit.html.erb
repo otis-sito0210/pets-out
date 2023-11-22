@@ -1,13 +1,12 @@
 <div class="container mt-3">
   <p><strong>Edit Place</strong></p>
 
-  <%= simple_form_for([@city, @place], method: :patch, url: city_place_path) do |form| %>
+  <%= simple_form_for(@place) do |form| %>
 
     <div class="form-actions">
       <%= form.input :title %>
       <%= form.input :subtitle %>
       <%= form.input :address %>
-      <%= form.input :city_id %>
       <%= form.input :pricing %>
       <%= form.input :rooms %>
       <%= form.input :details %>

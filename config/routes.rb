@@ -7,14 +7,15 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :cities do
-    resources :places
+    resources :places, only: [:new, :create, :index]
   end
 
   resources :trips, only: [:new, :create] do
-    resources :activities, only: [:index, :edit]
+    resources :activities, only: [:index]
   end
 
   resources :appointments
+  resources :places, only: [:edit, :update]
 
   get "my_trips", to: "trips#my_trips_index", as: "my_trips"
 
