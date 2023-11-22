@@ -9,9 +9,18 @@ class PetsController < ApplicationController
     @pet.save!
   end
 
+  def edit
+    @pet = Pet.find(params[:id])
+  end
+
+  def update
+    @pet = Pet.find(params[:id])
+    @pet.update(pet_params)
+  end
+
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :age, :size, :breed, :details)
+    params.require(:pet).permit(:name, :age, :size, :breed, :details, :photo)
   end
 end

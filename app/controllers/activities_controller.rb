@@ -16,13 +16,17 @@ class ActivitiesController < ApplicationController
     @activities = Activity.where(city_id: @city.id)
   end
 
-  # def index_activities_on_city_id
-  #   @activities = Activity.where(trip_id: params[:trip_id])
-  #   @trip = Trip.find(params[:trip_id])
-  # end
+  def edit
+    @activity = Activity.find(params[:id])
+  end
+
+  def update
+    @activity = Activity.find(params[:id])
+    @activity.update(activity_params)
+  end
 
   private
   def activity_params
-    params.require(:activity).permit(:title, :subtitle, :address, :city_id, :details)
+    params.require(:activity).permit(:title, :subtitle, :address, :city_id, :details, :photo)
   end
 end

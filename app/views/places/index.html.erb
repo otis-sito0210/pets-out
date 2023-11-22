@@ -4,6 +4,7 @@
   <ol>
   <% @places.each do |place| %>
     <li>
+      <%= cl_image_tag place.photo.key, height: 400, width: 500, crop: :fill if place.photo.attached? %>
       <h2> <%=  place.title %> </h2>
       <p>  <%=  place.subtitle %> </p>
       <p>  Address: <%=  place.address %> </p>
@@ -11,7 +12,10 @@
       <p>  Price: <%=  place.pricing %> </p>
       <p>  Details: <%=  place.details %> </p>
     </li>
+
+
     <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn btn-primary mt-3" %>
+   <%= link_to "Edit Place", edit_city_place_path(@city, place.id), class: "btn btn-secondary mt-3" %>
   <% end %>
   </ol>
 </div>

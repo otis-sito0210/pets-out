@@ -50,11 +50,11 @@ require "faker"
 
 
 
-10.times do
+2000.times do
   activity = Activity.new(
     user_id: 1,
     details: Faker::Lorem.paragraph,
-    city_id: 11,
+    city_id: rand(11..54),
     title: Faker::Lorem.words(number: 3).join(' '),
     subtitle: Faker::Lorem.sentence,
     address: Faker::Address.full_address

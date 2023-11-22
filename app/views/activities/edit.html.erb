@@ -1,5 +1,5 @@
 <div class="container mt-3">
-  <p><strong>New Activity</strong></p>
+  <p><strong>Edit Activity</strong></p>
 
   <%= simple_form_for(@activity) do |form| %>
 
@@ -9,11 +9,10 @@
       <%= form.input :address %>
       <%= form.input :city_id %>
       <%= form.input :details %>
-      <%= f.input :photo, as: :file %>
+      <%= form.input :photo, as: :file %>
 
-      <%= form.button :submit, 'Create Activity', class: 'btn btn-primary' %>
+      <%= form.button :submit, 'Update Activity', class: 'btn btn-primary' %>
     </div>
   <% end %>
 
-  <%# <%= link_to 'Back', root, class: 'btn btn-secondary mt-2' %>
 </div>

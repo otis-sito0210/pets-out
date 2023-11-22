@@ -8,6 +8,8 @@
     <p> <%= activity.address %> </p>
     <p> <%= activity.details %> </p>
 
+
   <%= link_to "Make appointment",  new_appointment_path(trip_id: @trip.id, activity_id: activity.id), class: "btn btn-primary" %>
+  <%= link_to "Edit Activity",   edit_trip_activity(activity_id: activity.id), class: "btn btn-secondary" %>
   <% end %>
 </div>

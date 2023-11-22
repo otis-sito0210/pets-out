@@ -1,5 +1,5 @@
 <div class="container mt-3">
-  <p><strong>New Pet</strong></p>
+  <p><strong>Edit Pet</strong></p>
 
   <%= simple_form_for(@pet) do |form| %>
 
@@ -9,11 +9,10 @@
       <%= form.input :size %>
       <%= form.input :breed %>
       <%= form.input :details %>
-      <%= f.input :photo, as: :file %>
+      <%= form.input :photo, as: :file %>
 
-      <%= form.button :submit, 'Create Pet', class: 'btn btn-primary' %>
+      <%= form.button :submit, 'Update Pet', class: 'btn btn-primary' %>
     </div>
   <% end %>
 
-  <%# <%= link_to 'Back', root, class: 'btn btn-secondary mt-2' %>
 </div>

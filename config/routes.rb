@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
 
   resources :trips, only: [:new, :create] do
-    resources :activities, only: [:index]
+    resources :activities, only: [:index, :edit]
   end
 
   resources :appointments
