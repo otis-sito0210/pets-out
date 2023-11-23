@@ -18,30 +18,51 @@
 
 <div class="container mt-3">
   <h1>Popular pet-friendly places</h1>
-  <ol>
+
+  <% if @city.present? %>
+  <div class="card-trip mt-2">
+    <%= cl_image_tag @city.photo.key, height: 400, width: 500, crop: :fill if @city.photo.attached? %>
+
+    <div class="card-trip-infos">
+      <div>
+        <h2> <%= link_to @city.local, city_places_path(@city.id) %></h2>
+      </div>
+    </div>
+   </div>
+
+  <% else %>
     <% @cities.first(5).each do |city| %>
-      <li>
-        <%= link_to city.local, city_places_path(city.id) %>
-        <%= cl_image_tag city.photo.key, height: 400, width: 500, crop: :fill if city.photo.attached? %>
-        <ul>
-      <h4> Main activities: </h4>
-          <% city.activities.first(2).each do |a| %>
-            <li><strong><%= a.title %></strong></li>
-            <p><%= a.details %></p>
-          <% end %>
-        </ul>
-      </li>
+    <div class="card-trip mt-2">
+      <%= cl_image_tag city.photo.key, height: 400, width: 500, crop: :fill if city.photo.attached? %>
+
+      <div class="card-trip-infos">
+        <div>
+        <h2> <%= link_to city.local, city_places_path(city.id) %> </h2>
+        </div>
+      </div>
+    </div>
+
+
+
+      <% end %>
     <% end %>
-  </ol>
+
 </div>
 
-<div class="container">
-  <h2>Most upvoted activities</h2>
-  <ul>
+<div class="container mt-5">
+  <div class="activity-title">
+    <h2>Most upvoted activities</h2>
+  </div>
     <% @activities.first(5).each do |a| %>
-      <li><strong><%= a.title %></strong></li>
-      <p><%= a.details %></p>
-      <p>in <%= a.city.local %></p>
+    <div class="card-product mt-2">
+       <%= cl_image_tag a.photo.key, height: 400, width: 500, crop: :fill if a.photo.attached? %>
+
+      <div class="card-product-infos">
+        <h2><%= a.title %></h2>
+        <p><%= a.details %></p>
+        <p>in <%= a.city.local %></p>
+      </div>
+    </div>
+
     <% end %>
-  </ul>
 </div>

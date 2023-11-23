@@ -1,0 +1,64 @@
+.card-places-container {
+  display: flex;
+  flex-wrap: wrap; /* Allows elements to wrap onto the next line if they don't fit */
+}
+
+
+
+.card-places {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  text-decoration: none !important;
+  width: calc(33.33% - 20px); /* Adjust the width as needed, considering margins and padding */
+  margin-right: 20px; /* Adjust the margin between card-trip elements */
+  box-sizing: border-box; /* Ensures padding and border are included in the width */
+}
+
+.card-places > img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-places h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-places p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+
+// .card-places .card-trip-infos {
+//   padding: 16px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//   position: relative;
+// }
+
+// .card-places-infos .card-trip-user {
+//   position: absolute;
+//   right: 16px;
+//   top: -20px;
+//   width: 40px;
+// }
+
+/* Add this to your CSS file */
+.card-places-infos {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-places-text {
+  flex-grow: 1; /* Allows the text content to take up the remaining space */
+}
+
+.card-places-btn {
+  flex-shrink: 0; /* Prevents the button from shrinking to fit */
+}

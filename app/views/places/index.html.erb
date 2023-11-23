@@ -1,21 +1,25 @@
 <div class="container mt-3">
   <h1>Houses in <strong><%= @city.local %></strong></h1>
 
-  <ol>
-  <% @places.each do |place| %>
-    <li>
-      <%= cl_image_tag place.photo.key, height: 400, width: 500, crop: :fill if place.photo.attached? %>
-      <h2> <%=  place.title %> </h2>
-      <p>  <%=  place.subtitle %> </p>
-      <p>  Address: <%=  place.address %> </p>
-      <p>  Rooms: <%=  place.rooms %> </p>
-      <p>  Price: <%=  place.pricing %> </p>
-      <p>  Details: <%=  place.details %> </p>
-    </li>
+  <div class="card-places-container">
+    <% @places.each do |place| %>
+      <div class="card-places mt-3">
+        <%= cl_image_tag place.photo.key, height: 400, width: 500, crop: :fill if place.photo.attached? %>
 
-
-    <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn btn-primary mt-3" %>
-   <%= link_to "Edit Place", edit_place_path(place), class: "btn btn-secondary mt-3" %>
-  <% end %>
-  </ol>
+        <div class="card-places-infos p-3">
+          <div class="card-places-text">
+            <h2> <%=  place.title %> </h2>
+            <p>  <%=  place.subtitle %> </p>
+            <p>  Address: <%=  place.address %> </p>
+            <p>  Rooms: <%=  place.rooms %> </p>
+            <p>  Details: <%=  place.details %> </p>
+          </div>
+          <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
+        </div>
+        <div class="card-places-btn">
+          <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn btn-primary m-3" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </div>

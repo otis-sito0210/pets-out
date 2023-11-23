@@ -6,10 +6,10 @@ class PagesController < ApplicationController
     @activities = Activity.all
 
     if params[:query].present?
-      city = City.find_by(local: params[:query])
+      @city = City.find_by(local: params[:query])
 
-      if city.present?
-        @activities = city.activities
+      if @city.present?
+        @activities = @city.activities
       else
         flash[:notice] = "City not found."
       end

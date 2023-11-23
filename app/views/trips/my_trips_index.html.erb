@@ -1,20 +1,26 @@
 <div class="container mt-3">
 
 <% @trips.each do |trip| %>
-  <h1> Trip to <%= trip.place.city.local %> </h1>
+  <div class="card-trip mt-5">
+    <%= cl_image_tag trip.place.city.photo.key, height: 400, width: 500, crop: :fill if trip.place.city.photo.key %>
 
-  <h2> <%= trip.place.title %> </h2>
-  <h4> <%= trip.place.subtitle %> </h4>
-  <p> <%= trip.place.address %> </p>
+    <div class="card-trip-infos">
+      <div>
+          <h1> Trip to <%= trip.place.city.local %> </h1>
+          <h2> <%= trip.place.title %> </h2>
+          <h4> <%= trip.place.subtitle %> </h4>
+          <p> <%= trip.place.address %> </p>
+          <p> Starts in <%= trip.start_date %>  </p>
+          <p> Ends in <%= trip.end_date %>  </p>
 
-  <p> Starts in <%= trip.start_date %>  </p>
-  <p> Ends in <%= trip.end_date %>  </p>
-
- <h4> Your appointments:</h4>
- <% trip.appointments.each do |appointment| %>
-      <p> <%= appointment.activity.title %> </p>
-      <p> <%= appointment.hour %> </p>
-      <p> <%= appointment.date %> </p>
-    <% end %>
-<% end %>
+          <h4> Your appointments:</h4>
+            <% trip.appointments.each do |appointment| %>
+            <p> <%= appointment.activity.title %> </p>
+            <p> <%= appointment.hour %> </p>
+            <p> <%= appointment.date %> </p>
+           <% end %>
+          </div>
+      </div>
+    </div>
+  <% end %>
 </div>
