@@ -3,6 +3,13 @@ class PlacesController < ApplicationController
   def index
     @city = City.find(params[:city_id])
     @places = @city.places
+
+    @markers = @places.geocoded.map do |place|
+      {
+        lat: place.latitude,
+        lng: place.longitude
+      }
+    end
   end
 
   def new

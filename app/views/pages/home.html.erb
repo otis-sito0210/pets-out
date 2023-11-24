@@ -53,7 +53,7 @@
   <div class="activity-title">
     <h2>Most upvoted activities</h2>
   </div>
-    <% @activities.first(5).each do |a| %>
+    <% @activities.last(2).each do |a| %>
     <div class="card-product mt-2">
        <%= cl_image_tag a.photo.key, height: 400, width: 500, crop: :fill if a.photo.attached? %>
 

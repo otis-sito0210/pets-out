@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   # root "articles#index"
 
   resources :cities do
-    resources :places, only: [:new, :create, :index]
-    resources :activities, only: [:new, :create]
+    resources :places, only: [:new, :create, :edit, :index]
+    resources :activities, only: [:new, :create, :edit, :update]
   end
 
   resources :trips, only: [:new, :create] do
