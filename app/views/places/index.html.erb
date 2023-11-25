@@ -6,7 +6,7 @@
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"
   data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
- 
+
 
   <div class="card-places-container">
     <% @places.each do |place| %>
@@ -24,9 +24,11 @@
           <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
         </div>
         <div class="card-places-btn">
-          <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn btn-primary m-3" %>
+          <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn-donate m-10" %>
         </div>
       </div>
     <% end %>
   </div>
 </div>
+
+
