@@ -3,7 +3,7 @@
 
   <%= simple_form_for([@city, @place]) do |form| %>
 
-    <div class="form-actions">
+    <div class="form-group">
       <%= form.input :title %>
       <%= form.input :subtitle %>
       <%= form.input :address %>
@@ -12,14 +12,12 @@
       <%= form.input :details %>
       <%= form.input :photo, as: :file %>
 
-<%#
-      <div class="form-group">
-        <label for="photos"> Photos:</label>
-        <input type="file" name="photos[]" multiple id="photos" class="form-control">
-      </div> %>
+      </div>
 
-      <%= form.button :submit, 'Create Place', class: 'btn btn-primary' %>
-    </div>
+      <div class="form-actions">
+        <%= form.button :submit, 'Create Place', class: 'btn btn-primary' %>
+
+      </div>
   <% end %>
 
   <%# <%= link_to 'Back', root, class: 'btn btn-secondary mt-2' %>

@@ -1,0 +1,17 @@
+<div class="container">
+  <%= cl_image_tag place.photo.key, height: 100, width: 125, crop: :fill if place.photo.attached? %>
+  <h2> <%= place.title %> </h2>
+  <p> <%= place.address %> </p>
+  <p> £ <%= place.pricing %> </p>
+  <%# <div class="card-places-btn">
+          <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn btn-primary m-3" %>
+        <%# </div> %>
+
+   <div data-controller="trips-create">
+    <button data-action="click->trips-create#fire" class="btn btn-dark m-3">Book this place</button>
+      <div data-trips-create-target="tripElement" class="d-none">
+      <%= render "trips/form", trip: @trip, place: place %>
+      </div>
+  </div>
+
+</div>

@@ -11,15 +11,21 @@ Rails.application.routes.draw do
     resources :activities, only: [:new, :create, :edit, :update]
   end
 
-  resources :trips, only: [:new, :create] do
+  resources :trips do
     resources :activities, only: [:index]
+  end
+
+  resources :places do
+    resources :trips, only: [:new, :create]
   end
 
   resources :appointments
   resources :places, only: [:edit, :update]
+  resources :cities
+  resources :pets
 
 
   get "my_trips", to: "trips#my_trips_index", as: "my_trips"
 
-  resources :pets
+
 end

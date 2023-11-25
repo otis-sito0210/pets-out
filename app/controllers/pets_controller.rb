@@ -1,4 +1,14 @@
 class PetsController < ApplicationController
+
+
+  def index
+    @pets = Pet.all
+  end
+
+  def show
+    @pet = Pet.find(params[:id])
+  end
+
   def new
     @pet = Pet.new
   end
@@ -6,7 +16,12 @@ class PetsController < ApplicationController
   def create
     @pet = Pet.new(pet_params)
     @pet.user = current_user
-    @pet.save!
+
+    if @pet.save!
+      redirect_to pets_path, notice: 'Pet was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit

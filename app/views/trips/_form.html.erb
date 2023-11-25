@@ -1,0 +1,17 @@
+<div class="container mt-3">
+
+<h1><strong>New Trip</strong></h1>
+
+<p>how long you're staying?</p>
+
+  <%= simple_form_for([place, trip]) do |form| %>
+
+    <div class="form-actions">
+      <%= form.input :start_date, as: :date, html5: true %>
+      <%= form.input :end_date, as: :date, html5: true %>
+
+
+      <%= form.button :submit, 'Create Trip', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
