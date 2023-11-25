@@ -1,9 +1,11 @@
 require "faker"
 
-# # puts "Destroy cities and places"
-# # City.destroy_all
-# # Place.destroy_all
-# Activity.destroy_all
+puts "Destroy cities and places"
+City.destroy_all
+Place.destroy_all
+Activity.destroy_all
+Appointment.destroy_all
+Trip.destroy_all
 
 # print "Creating cities"
 
