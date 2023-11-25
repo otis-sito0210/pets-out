@@ -18,6 +18,8 @@
 
 <div class="container mt-3">
   <h1>Popular pet-friendly places</h1>
+  <%= link_to "Add city", new_city_path, class: "btn btn-primary" %>
+
 
   <% if @city.present? %>
   <div class="card-trip mt-2">

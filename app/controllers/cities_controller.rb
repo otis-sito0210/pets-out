@@ -5,8 +5,12 @@ class CitiesController < ApplicationController
 
   def create
     @city = City.new(city_params)
-    @city.user = current_user
-    @city.save!
+    # @city.user = current_user
+    if @city.save!
+      redirect_to root_path, notice: 'City was successfully created.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def edit
