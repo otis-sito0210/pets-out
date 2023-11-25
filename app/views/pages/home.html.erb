@@ -7,21 +7,23 @@
       <%= form_with url: root_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
                             params[:query],
-                            class: "form-control",
+                            class: "form-control rounded-pill",
                             placeholder: "Type a city to visit with your pet!"
         %>
-        <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        <%= submit_tag "Search", name: "", class: "btn-donate" %>
       <% end %>
     </div>
   </div>
 </div>
 
-<div class="container mt-3">
+<div class="container-text mt-5 p-3 text-center">
   <h1>Popular pet-friendly places</h1>
-  <%= link_to "Add city", new_city_path, class: "btn btn-primary" %>
+  <%= link_to "Add city", new_city_path, class: "btn-donate" %>
+</div>
 
+<div class="parent" p-5 >
 
-  <% if @city.present? %>
+    <% if @city.present? %>
   <div class="card-trip mt-2">
     <%= cl_image_tag @city.photo.key, height: 400, width: 500, crop: :fill if @city.photo.attached? %>
 
@@ -33,7 +35,7 @@
    </div>
 
   <% else %>
-    <% @cities.first(5).each do |city| %>
+    <% @cities.first(10).each do |city| %>
     <div class="card-trip mt-2">
       <%= cl_image_tag city.photo.key, height: 400, width: 500, crop: :fill if city.photo.attached? %>
 
@@ -43,17 +45,16 @@
         </div>
       </div>
     </div>
-
-
-
       <% end %>
     <% end %>
 
 </div>
 
-<div class="container mt-5">
+
+
+<div class="container-text mt-5 p-3 text-center">
   <div class="activity-title">
-    <h2>Most upvoted activities</h2>
+    <h1>Most upvoted activities</h1>
   </div>
     <% @activities.last(2).each do |a| %>
     <div class="card-product mt-2">
