@@ -15,7 +15,8 @@
 
           <h4> Your appointments:</h4>
             <% trip.appointments.each do |appointment| %>
-            <p> <%= appointment.activity.title %> </p>
+            <h1>  <%= appointment.activity.title %>  </h1>
+             <%= link_to "Activity Chat", activity_path(appointment.activity.id), class: "btn btn-primary" %>
             <p> <%= appointment.hour %> </p>
             <p> <%= appointment.date %> </p>
            <% end %>
