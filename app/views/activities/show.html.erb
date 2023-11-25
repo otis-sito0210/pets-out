@@ -1,3 +1,22 @@
+
+<div class="container">
+  <h1>In this activity: </h1>
+  <% @users.each do |user| %>
+  <h2><strong> <%= user.nickname %></strong></h2>
+    <% user.pets.each do |pet|  %>
+    <h4> <%= pet.name %> </h4>
+    <p> <%= pet.breed %> </h4>
+    <% end %>
+  <% end %>
+
+  <h2>PetGPT</h2>
+  <h4>It tells you how well pets from users in this chat will get along and tips</h4>
+  <p>
+    <%= @content %>
+  </p>
+</div>
+
+
 <div class="container activity-message"
   data-controller="activity-subscription"
   data-activity-subscription-activity-id-value="<%= @activity.id %>"
