@@ -23,6 +23,11 @@ class ActivitiesController < ApplicationController
     @activities = Activity.where(city_id: @city.id)
   end
 
+  def show
+    @activity = Activity.find(params[:id])
+    @meeting = Meeting.new
+  end
+
   def edit
     @activity = Activity.find(params[:id])
   end

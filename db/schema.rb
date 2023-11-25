@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_24_012206) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_25_143004) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -73,11 +73,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_24_012206) do
   end
 
   create_table "meetings", force: :cascade do |t|
-    t.bigint "activities_id", null: false
+    t.bigint "activity_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["activities_id"], name: "index_meetings_on_activities_id"
+    t.string "content"
+    t.index ["activity_id"], name: "index_meetings_on_activity_id"
     t.index ["user_id"], name: "index_meetings_on_user_id"
   end
 
@@ -130,6 +131,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_24_012206) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
@@ -140,7 +142,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_24_012206) do
   add_foreign_key "activities", "users"
   add_foreign_key "appointments", "activities"
   add_foreign_key "appointments", "trips"
-  add_foreign_key "meetings", "activities", column: "activities_id"
+  add_foreign_key "meetings", "activities"
   add_foreign_key "meetings", "users"
   add_foreign_key "pets", "users"
   add_foreign_key "places", "cities"
