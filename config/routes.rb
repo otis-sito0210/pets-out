@@ -24,6 +24,10 @@ Rails.application.routes.draw do
   resources :cities
   resources :pets
 
+  resources :activities, only: :show do
+    resources :meetings, only: [:create]
+  end
+
 
   get "my_trips", to: "trips#my_trips_index", as: "my_trips"
 

@@ -1,0 +1,28 @@
+<div class="container activity-message"
+  data-controller="activity-subscription"
+  data-activity-subscription-activity-id-value="<%= @activity.id %>"
+>
+
+  <h1>#<%= @activity.title %></h1>
+
+  <div class="messages" data-activity-subscription-target="meetings">
+    <% @activity.meetings.each do |meeting| %>
+      <% render "meetings/meeting", meeting: meeting %>
+      <% end %>
+  </div>
+
+
+
+  <%= simple_form_for [@activity, @meeting],
+  html: { data: { action: "turbo:submit-end->activity-subscription#resetForm" },
+  class: "d-flex" } do |f| %>
+
+  <%= f.input :content,
+    label: false,
+    placeholder: "Message ##{@activity.title}",
+    wrapper_html: {class: "flex-grow-1"}
+  %>
+  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+<% end %>
+
+</div>
