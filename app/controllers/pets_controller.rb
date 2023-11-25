@@ -31,11 +31,16 @@ class PetsController < ApplicationController
   def update
     @pet = Pet.find(params[:id])
     @pet.update(pet_params)
+    if @pet.save!
+      redirect_to pets_path,  notice: 'Pet was successfully edited.'
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   private
 
   def pet_params
-    params.require(:pet).permit(:name, :age, :size, :breed, :details, :photo)
+    params.require(:pet).permit(:name, :age, :size, :breed, :details, :user_id, :photo)
   end
 end

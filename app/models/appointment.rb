@@ -1,6 +1,6 @@
 class Appointment < ApplicationRecord
   belongs_to :activity
-  has_many :trips
+  belongs_to :trip
 
   validates :date, presence: true
   validates :hour, presence: true
