@@ -2,7 +2,7 @@
 
 <h1><strong>New Trip</strong></h1>
 
-<p>how long you're staying?</p>
+<p>How long you're <strong>staying?</strong></p>
 
   <%= simple_form_for([place, trip]) do |form| %>
 
@@ -11,7 +11,7 @@
       <%= form.input :end_date, as: :date, html5: true %>
 
 
-      <%= form.button :submit, 'Create Trip', class: 'btn btn-primary' %>
+      <%= form.button :submit, 'Create Trip', class: 'btn-donate' %>
     </div>
   <% end %>
 </div>

@@ -7,7 +7,7 @@
       <%= form_with url: root_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query,
                             params[:query],
-                            class: "form-control rounded-pill",
+                            class: "form-control",
                             placeholder: "Type a city to visit with your pet!"
         %>
         <%= submit_tag "Search", name: "", class: "btn-donate" %>
@@ -16,56 +16,62 @@
   </div>
 </div>
 
-<div class="container-text mt-5 p-3 text-center">
-  <h1>Popular pet-friendly places</h1>
-  <%= link_to "Add city", new_city_path, class: "btn-donate" %>
-</div>
+ <%= link_to "Add city", new_city_path, class: "btn-donate" %>
 
-<div class="parent" p-5 >
+<div class="container_cities">
+  <h1>Popular pet-friendly <strong>cities</strong> </h1>
 
-    <% if @city.present? %>
-  <div class="card-trip mt-2">
-    <%= cl_image_tag @city.photo.key, height: 400, width: 500, crop: :fill if @city.photo.attached? %>
+  <div class="parent" p-5 >
 
-    <div class="card-trip-infos">
-      <div>
-        <h2> <%= link_to @city.local, city_places_path(@city.id) %></h2>
-      </div>
-    </div>
-   </div>
-
-  <% else %>
-    <% @cities.first(10).each do |city| %>
+      <% if @city.present? %>
     <div class="card-trip mt-2">
-      <%= cl_image_tag city.photo.key, height: 400, width: 500, crop: :fill if city.photo.attached? %>
+      <%= cl_image_tag @city.photo.key, height: 400, width: 500, crop: :fill if @city.photo.attached? %>
 
       <div class="card-trip-infos">
         <div>
-        <h2> <%= link_to city.local, city_places_path(city.id) %> </h2>
+          <h2> <%= link_to @city.local, city_places_path(@city.id) %></h2>
         </div>
       </div>
     </div>
-      <% end %>
-    <% end %>
 
-</div>
+    <% else %>
+      <% @cities.first(10).each do |city| %>
+      <div class="card-trip mt-2">
+        <%= cl_image_tag city.photo.key, height: 400, width: 500, crop: :fill if city.photo.attached? %>
 
-
-
-<div class="container-text mt-5 p-3 text-center">
-  <div class="activity-title">
-    <h1>Most upvoted activities</h1>
-  </div>
-    <% @activities.last(2).each do |a| %>
-    <div class="card-product mt-2">
-       <%= cl_image_tag a.photo.key, height: 400, width: 500, crop: :fill if a.photo.attached? %>
-
-      <div class="card-product-infos">
-        <h2><%= a.title %></h2>
-        <p><%= a.details %></p>
-        <p>in <%= a.city.local %></p>
+        <div class="card-trip-infos">
+          <div>
+          <h2> <%= link_to city.local, city_places_path(city.id) %> </h2>
+          </div>
+        </div>
       </div>
-    </div>
+        <% end %>
+      <% end %>
 
-    <% end %>
+  </div>
 </div>
+
+
+<div class="container_activities">
+      <h1>Most upvoted <strong>activities</strong></h1>
+
+  <div class="parent" p-5 >
+
+        <% @activities.last(2).each do |a| %>
+        <div class="card-product mt-2">
+          <%= cl_image_tag a.photo.key, height: 400, width: 500, crop: :fill if a.photo.attached? %>
+
+          <div class="card-product-infos">
+            <h2><%= a.title %></h2>
+            <p><%= a.details %></p>
+            <p>in <%= a.city.local %></p>
+          </div>
+        </div>
+
+        <% end %>
+  </div>
+</div>
+
+
+<!-- app/views/shared/_footer.html.erb -->
+

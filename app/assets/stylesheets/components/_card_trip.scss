@@ -28,31 +28,41 @@
 }
 
 .card-trip-infos {
-  padding: 16px;
+  --clr-font-main: hsla(0 0% 20% / 100);
+  --btn-bg-1: hsla(194 100% 69% / 1);
+  --btn-bg-2: #1f75ff;
+  --btn-bg-color: hsla(360 100% 100% / 1);
+  --radii: 0.5em;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 5px;
+  padding: 0.9em 1.4em;
   display: flex;
-  justify-content: space-between;
   align-items: flex-end;
   position: relative;
-  background-color: #fafafa; /* Cor de fundo do botão */
-  color: #050505; /* Cor do texto no botão */
+  min-width: 120px;
+  min-height: 44px;
+  font-size: var(--size, 1rem);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-weight: 500;
+  transition: 0.8s;
+  background-size: 280% auto;
+  background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
   border: none;
-  border-radius: 8px; /* ou outro valor conforme desejado */
-  cursor: pointer; /* Altera o cursor ao pairar sobre o botão */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Efeito de transição suave */
-  margin-top: 5px;  /* Outros estilos conforme necessário */
+  border-radius: var(--radii);
+  color: var(--btn-bg-color);
+  box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
 }
 
 .card-trip-infos:hover {
-  background-color: #318ce7;
-  color: white;
-  /* Cor de fundo ao passar o mouse, ajuste conforme desejado */
+  background-position: right top;
+  color: black;
 }
 
 .card-trip-infos a {
   text-decoration: none; /* Remover sublinhado do link */
   color: inherit; /* Herdar a cor do texto do contêiner pai */
 }
-
 
 .card-trip .card-trip-infos .card-trip-user {
   position: absolute;
