@@ -1,34 +1,52 @@
-
-<div class="container mt-3">
+<div style="margin: 15px;">
   <h1>Houses in <strong><%= @city.local %></strong></h1>
-
-  <div style="width: 100%; height: 600px;"
-  data-controller="map"
-  data-map-markers-value="<%= @markers.to_json %>"
-  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>
-
-
-  <div class="card-places-container">
-    <% @places.each do |place| %>
-      <div class="card-places mt-3">
-        <%= cl_image_tag place.photo.key, height: 400, width: 500, crop: :fill if place.photo.attached? %>
-
-        <div class="card-places-infos p-3">
-          <div class="card-places-text">
-            <h2> <%=  place.title %> </h2>
-            <p>  <%=  place.subtitle %> </p>
-            <p>  Address: <%=  place.address %> </p>
-            <p>  Rooms: <%=  place.rooms %> </p>
-            <p>  Details: <%=  place.details %> </p>
-          </div>
-          <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
-        </div>
-        <div class="card-places-btn">
-          <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn-donate m-10" %>
-        </div>
-      </div>
-    <% end %>
-  </div>
 </div>
 
 
+
+  <div class="card-places-container m-3">
+
+      <% @places.each do |place| %>
+        <div class="card-places">
+          <%= cl_image_tag place.photo.key, height: 400, width: 500, crop: :fill if place.photo.attached? %>
+
+          <div class="card-places-infos p-3">
+            <div class="card-places-text">
+              <h2> <%=  place.title %> </h2>
+              <p>  <%=  place.subtitle %> </p>
+              <p>  Address: <%=  place.address %> </p>
+              <p>  Rooms: <%=  place.rooms %> </p>
+              <p>  Details: <%=  place.details %> </p>
+            </div>
+            <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
+          </div>
+
+          <div class="card-places-btn mb-4 mt-3 m-2">
+            <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn-donate m-10" %>
+          </div>
+
+          <div style="width: 100%; height: 400px;"
+            data-controller="map"
+            data-map-markers-value="<%= @markers.to_json %>"
+            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+          </div>
+
+        </div>
+      <% end %>
+
+
+  
+</div>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>

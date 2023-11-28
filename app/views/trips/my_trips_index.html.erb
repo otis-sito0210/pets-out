@@ -1,10 +1,8 @@
 <div class="container text-center mt-5">
-   <h1><strong>Your trips</strong></h1>
+   <h1><i class="fa-solid fa-suitcase"></i>     <strong>Your trips</strong></h1>
 </div>
 
 <div class="parent" p-5 >
-
-  <div class="container">
 
   <% @trips.each do |trip| %>
     <div class="card-trip mt-5">
@@ -12,14 +10,14 @@
 
       <div class="card-trip-infos">
         <div>
-            <h1> Trip to <%= trip.place.city.local %> </h1>
-            <h2> <%= trip.place.title %> </h2>
-            <h4> <%= trip.place.subtitle %> </h4>
+            <h2> Trip to <%= trip.place.city.local %> </h2>
+            <h1> <%= trip.place.title %> </h1>
+            <h5> <%= trip.place.subtitle %> </h5>
             <p> <%= trip.place.address %> </p>
             <p> Starts in <%= trip.start_date %>  </p>
             <p> Ends in <%= trip.end_date %>  </p>
-
-            <h4> Your appointments:</h4>
+            
+            <h6> Your appointments:</h6>
               <% trip.appointments.each do |appointment| %>
               <h1>  <%= appointment.activity.title %>  </h1>
               <%= link_to "Activity Chat", activity_path(appointment.activity.id), class: "btn-donate" %>
@@ -30,5 +28,4 @@
         </div>
       </div>
     <% end %>
-  </div>
 </div>
