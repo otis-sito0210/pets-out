@@ -1,6 +1,5 @@
 .card-trip {
   overflow: hidden;
-  background: white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   text-decoration: none;
   border-radius: 8px;
@@ -28,38 +27,80 @@
 }
 
 .card-trip-infos {
-  --clr-font-main: hsla(0 0% 20% / 100);
-  --btn-bg-1: hsla(194 100% 69% / 1);
-  --btn-bg-2: #1f75ff;
-  --btn-bg-color: hsla(360 100% 100% / 1);
-  --radii: 0.5em;
-  cursor: pointer;
-  text-decoration: none;
-  margin-top: 5px;
-  padding: 0.9em 1.4em;
-  display: flex;
-  align-items: flex-end;
   position: relative;
-  min-width: 120px;
-  min-height: 44px;
-  font-size: var(--size, 1rem);
-  font-family: "Segoe UI", system-ui, sans-serif;
-  font-weight: 500;
-  transition: 0.8s;
-  background-size: 280% auto;
-  background-image: linear-gradient(325deg, var(--btn-bg-2) 0%, var(--btn-bg-1) 55%, var(--btn-bg-2) 90%);
-  border: none;
-  border-radius: var(--radii);
-  color: var(--btn-bg-color);
-  box-shadow: 0px 0px 20px rgba(71, 184, 255, 0.5), 0px 5px 5px -1px rgba(58, 125, 233, 0.25), inset 4px 4px 8px rgba(175, 230, 255, 0.5), inset -4px -4px 8px rgba(19, 95, 216, 0.35);
+  margin-top: 5px;
+  padding: 10px 20px;
+  border-radius: 7px;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+  background: #ffffff;
+  color: #000000;
+  overflow: hidden;
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
 }
 
 .card-trip-infos:hover {
-  background-position: right top;
-  color: black;
+  background: rgb(5, 162, 201);
+  box-shadow: 0 0 30px 5px rgba(0, 142, 236, 0.815);
+  color: #ffffff;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
+}
+
+.card-trip-infos:hover::before {
+  -webkit-animation: sh02 0.5s 0s linear;
+  -moz-animation: sh02 0.5s 0s linear;
+  animation: sh02 0.5s 0s linear;
+}
+
+.card-trip-infos::before {
+  content: '';
+  display: block;
+  width: 0px;
+  height: 86%;
+  position: absolute;
+  top: 7%;
+  left: 0%;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 0 0 50px 30px #fff;
+  -webkit-transform: skewX(-20deg);
+  -moz-transform: skewX(-20deg);
+  -ms-transform: skewX(-20deg);
+  -o-transform: skewX(-20deg);
+  transform: skewX(-20deg);
+}
+
+@keyframes sh02 {
+  from {
+    opacity: 0;
+    left: 0%;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    left: 100%;
+  }
+}
+
+.card-trip-infos:active {
+  box-shadow: 0 0 0 0 transparent;
+  -webkit-transition: box-shadow 0.2s ease-in;
+  -moz-transition: box-shadow 0.2s ease-in;
+  transition: box-shadow 0.2s ease-in;
 }
 
 .card-trip-infos a {
+  font-size: 12px;
   text-decoration: none; /* Remover sublinhado do link */
   color: inherit; /* Herdar a cor do texto do contêiner pai */
 }

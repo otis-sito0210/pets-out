@@ -1,0 +1,9 @@
+.parent_map {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-column-gap: 14px;
+  grid-row-gap: 14px;
+  margin-top: 20px;
+  padding: 40px;
+  }

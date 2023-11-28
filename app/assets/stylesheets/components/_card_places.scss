@@ -1,17 +1,14 @@
 .card-places-container {
   display: flex;
-  flex-wrap: wrap; /* Allows elements to wrap onto the next line if they don't fit */
 }
-
-
 
 .card-places {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-decoration: none !important;
-  width: calc(33.33% - 20px); /* Adjust the width as needed, considering margins and padding */
-  margin-right: 20px; /* Adjust the margin between card-trip elements */
+  margin: 0 10px; /* Adjust the width as needed, considering margins and padding */
+  padding: 20px;
   box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 

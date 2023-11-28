@@ -1,12 +1,10 @@
 .container_cities {
-  max-width: 2200px;
-  max-height: 2200px;
+  max-width: 1800px; /* Altere o valor conforme necessário */
+  max-height: 1200px; /* Altere o valor conforme necessário */
   margin: 0 auto;
   padding: 50px;
+  background-color: rgba(251, 252, 253, 0.527);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
   text-align: center;
-}
-
-.container_cities:hover {
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4); /* Change the box-shadow on hover */
 }
