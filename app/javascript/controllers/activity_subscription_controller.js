@@ -22,7 +22,7 @@ connect() {
 
   #insertMessageAndScrollDown(data) {
   if (this.meetingsTarget) {
-    console.log(this.meetingsTarget); 
+    console.log(this.meetingsTarget);
     this.meetingsTarget.insertAdjacentHTML("beforeend", data)
     this.meetingsTarget.scrollTo(0, this.meetingsTarget.scrollHeight)
   } else {

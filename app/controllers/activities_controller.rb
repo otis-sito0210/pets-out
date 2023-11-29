@@ -34,31 +34,37 @@ class ActivitiesController < ApplicationController
     @appointments.each do |appointment|
       trip = Trip.find(appointment.trip.id)
       user = User.find(trip.user.id)
-      @users << user
+      @users << user unless @users.include?(user)
     end
 
-    client = OpenAI::Client.new
 
+    # pets_chat = []
+    # @users.each do |user|
+    #   user.pets.map do |pet|
+    #     content = "Give me a 10 words about #{pet.name}, using its #{pet.breed} breed and #{pet.details}."
+    #     pets_chat << content
+    #   end
+    # end
 
-    @users.each do |user|
-      pets_chat = user.pets.map do |pet|
-        {
-          role: "user",
-          content: "Tell me how well #{pet.name}, a #{pet.breed}, gets along with other pets. Give a playful rating (0 to 100) for their potential to have fun together. Also, suggest some activities they can do to enjoy each other's company, using #{pet.details} as mains reference. Be concise and specific, using bullet points for each dog."
-        }
-      end
+    # client = OpenAI::Client.new
+    # chat_response = client.chat(parameters: {
+    #   model: "gpt-3.5-turbo",
+    #   messages:  [ {role: "user", content: "#{pets_chat}. Give your opinion on how the interaction between these dogs will work, and which dog needs more atention to avoid mishaps. Use less than 120 words."} ]
+    # })
 
-      chat_response = client.chat(parameters: {
-        model: "gpt-3.5-turbo",
-        messages: pets_chat
-      })
+    # @content = chat_response["choices"][0]["message"]["content"]
 
-      # Extract the assistant's response for the current user's pets
-      @content = chat_response["choices"][0]["message"]["content"]
+    #demora p carrega -> background job?
+    #só para fazer as requisições -> o que ele retornar e criar a mensagem -> criar no meeting.
+      #quando logasse, 10 em 10 minutos
 
-      # # Do something with the assistant_response, like storing it for later use or displaying it to the user
-      # puts "Assistant response for #{user.name}'s pets: #{assistant_response}"
-      end
+    #das pessoas estarem conversando, e guardar o conteúdo - a pessoa entrar na sala.
+    #biblioteca de mensagens, que estão prontas - vai consultar o chatgpt - não vai criar, deixa como gatilho entrar na sala
+      #roda outro worker que vai rodar as mensagens em tempo real
+    #tá um caos esse rolê
+
+    #after create
+    #fazer o broadcast depois, pode fazer - na hora que logar a pessoa vê.
 
   end
 
