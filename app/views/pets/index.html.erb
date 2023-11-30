@@ -1,7 +1,68 @@
+<style>
+#colorful {
+   width: 31.4px;
+   height: 31.4px;
+   border-radius: 50%;
+   background: #2ed3ff;
+   transform-origin: top;
+   display: grid;
+   animation: colorful-3vgb5t 1s infinite linear;
+}
+
+#colorful::before,
+#colorful::after {
+   content: "";
+   grid-area: 1/1;
+   background: #619eff;
+   border-radius: 50%;
+   transform-origin: top;
+   animation: inherit;
+   animation-name: colorful-k94uub;
+}
+
+#colorful::after {
+   background: #474bff;
+   --s: 180deg;
+}
+
+@keyframes colorful-3vgb5t {
+   0%, 20% {
+      transform: rotate(0);
+   }
+
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+@keyframes colorful-k94uub {
+   50% {
+      transform: rotate(var(--s,90deg));
+   }
+
+   100% {
+      transform: rotate(0);
+   }
+}
+
+#content {
+      display: none;
+    }
+
+.container-map {
+    overflow: hidden; /* Evita que o mapa ultrapasse os limites do contêiner */
+  }
+
+</style>
+
+<center><div id="colorful" style="margin-top: 450px;"></div></center>
+
+<div id="content">
+
 <div class="container">
 <h1 class="mt-5"> Your Pets </h1>
 <%= link_to "Add Pet", new_pet_path, class:"btn-donate"%>
-    <div class="cards">
+    <div class="cards mt-5">
       <% @pets.each do |pet| %>
         <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
           url(<%= cl_image_path(pet.photo.key, height: 300, width: 400, crop: :fill)  if pet.photo.attached? %>)">
@@ -28,12 +89,22 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+<script>
+  function initializeMap() {
+    // Inicialize o mapa aqui
+    // Certifique-se de que o contêiner do mapa tem uma altura definida corretamente
+  }
+
+  // Simule o carregamento por 6 segundos (substitua isso pela sua lógica real de carregamento)
+  setTimeout(function() {
+    // Oculte o dot de carregamento
+    document.getElementById('colorful').style.display = 'none';
+
+    // Mostre o conteúdo
+    document.getElementById('content').style.display = 'block';
+
+    // Dispare um evento de redimensionamento do mapa
+    window.dispatchEvent(new Event('resize'));
+  }, 3000); // Simulando um tempo de carregamento de 3 segundos
+</script>

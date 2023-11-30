@@ -4,8 +4,11 @@
   margin-top: 100px;
   margin-left: 700px;
   padding: 70px;
-  background-color: rgba(255, 245, 224, 0.13);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  box-shadow:rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  background:
+  linear-gradient(293deg,
+  #757F9A 0%,
+  #D7DDE8 100%);
   border-radius: 15px;
   text-align: left;
 }

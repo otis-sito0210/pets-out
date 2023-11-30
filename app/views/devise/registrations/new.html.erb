@@ -1,14 +1,14 @@
 
 <div class="container_form mt-5 ">
 
-  <div class="container p-5">
+  <div class="container mt-3 p-1">
     <h2><i class="fa-solid fa-right-to-bracket"></i>    Sign up</h2>
   </div>
 
   <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
     <%= f.error_notification %>
 
-    <div class="form-inputs">
+    <div class="form-inputs" style="margin-top: 30px;">
       <%= f.input :email,
                   required: true,
                   autofocus: true,
@@ -27,13 +27,17 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: 'btn-donate' %>
+      <%= button_tag 'Sign up', type: 'submit', class: 'btn-form-1' %>
+    </div>
+
+    <div margin-top: 20px>
+      <%= button_tag 'Log in', type: 'button', class: 'btn-form-2', onclick: 'window.location.href="' + new_session_path(resource_name) + '";' %><br />
     </div>
   <% end %>
 
-  <div style="margin-top: 20px">
-    <%= render "devise/shared/links" %>
-  </div>
+  <!--<div style="margin-top: 20px">
+    <%= link_to "Log in", new_session_path(resource_name), class: 'btn-donate2'%><br />
+  </div>-->
 
 </div>
 

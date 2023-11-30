@@ -1,31 +1,124 @@
-<div class="container text-center mt-5">
-   <h1><i class="fa-solid fa-suitcase"></i>     <strong>Your trips</strong></h1>
+<%# Loader %>
+<style>
+#colorful {
+   width: 31.4px;
+   height: 31.4px;
+   border-radius: 50%;
+   background: #2ed3ff;
+   transform-origin: top;
+   display: grid;
+   animation: colorful-3vgb5t 1s infinite linear;
+}
+
+#colorful::before,
+#colorful::after {
+   content: "";
+   grid-area: 1/1;
+   background: #619eff;
+   border-radius: 50%;
+   transform-origin: top;
+   animation: inherit;
+   animation-name: colorful-k94uub;
+}
+
+#colorful::after {
+   background: #474bff;
+   --s: 180deg;
+}
+
+@keyframes colorful-3vgb5t {
+   0%, 20% {
+      transform: rotate(0);
+   }
+
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+@keyframes colorful-k94uub {
+   50% {
+      transform: rotate(var(--s,90deg));
+   }
+
+   100% {
+      transform: rotate(0);
+   }
+}
+
+#content {
+      display: none;
+    }
+
+.container-map {
+    overflow: hidden; /* Evita que o mapa ultrapasse os limites do contêiner */
+  }
+
+</style>
+
+<center><div id="colorful" style="margin-top: 450px;"></div></center>
+
+<div id="content">
+
+<div class="container text-center mt-5 p-5">
+   <h1><i class="fa-solid fa-suitcase"></i>     <strong>My trips</strong></h1>
 </div>
 
-<div class="parent" p-5 >
-
+<%# Flip Card %>
+<div class="parent" p-5>
   <% @trips.each do |trip| %>
-    <div class="card-trip mt-5">
-      <%= cl_image_tag trip.place.city.photo.key, height: 400, width: 500, crop: :fill if trip.place.city.photo.key %>
+    <div class="flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <h2>Trip to <strong><%= trip.place.city.local %></strong></h2>
+        </div>
 
-      <div class="card-trip-infos">
-        <div>
-            <h2> Trip to <%= trip.place.city.local %> </h2>
-            <h1> <%= trip.place.title %> </h1>
-            <h5> <%= trip.place.subtitle %> </h5>
-            <p> <%= trip.place.address %> </p>
-            <p> Starts in <%= trip.start_date %>  </p>
-            <p> Ends in <%= trip.end_date %>  </p>
-            
-            <h6> Your appointments:</h6>
-              <% trip.appointments.each do |appointment| %>
-              <h1>  <%= appointment.activity.title %>  </h1>
-              <%= link_to "Activity Chat", activity_path(appointment.activity.id), class: "btn-donate" %>
-              <p> <%= appointment.hour %> </p>
-              <p> <%= appointment.date %> </p>
-            <% end %>
-            </div>
+        <div class="flip-card-back mt-2">
+          <div class="card-places" style="flex: 1; margin-top: 10px;">
+            <%= cl_image_tag trip.place.city.photo.key, height: 100, width: 200, crop: :fill if trip.place.city.photo.key %>
+          </div>
+          <h4 style="margin-top: 10px;"><strong><%= trip.place.title %></strong></h4>
+           <div style="margin-top: 5px; margin-right: 5px; text-align: left; padding: 10px">
+            <p><strong>Details:</strong> <%= trip.place.subtitle %> </p>
+            <p><strong>Adress:</strong> <%= trip.place.address %> </p>
+            <p><strong>Starts in:</strong> <%= trip.start_date %> </p>
+            <p><strong>Ends in:</strong> <%= trip.end_date %> </p>
+          </div>
+
+          <!-- Include appointments for this trip -->
+          <h6> Your appointments:</h6>
+          <% trip.appointments.each do |appointment| %>
+            <h1> <%= appointment.activity.title %> </h1>
+            <%= link_to "Activity Chat", activity_path(appointment.activity.id), class: "btn-donate" %>
+            <p> <%= appointment.hour %> </p>
+            <p> <%= appointment.date %> </p>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
 </div>
+
+
+
+<script>
+  function initializeMap() {
+    // Inicialize o mapa aqui
+    // Certifique-se de que o contêiner do mapa tem uma altura definida corretamente
+  }
+
+  // Simule o carregamento por 6 segundos (substitua isso pela sua lógica real de carregamento)
+  setTimeout(function() {
+    // Oculte o dot de carregamento
+    document.getElementById('colorful').style.display = 'none';
+
+    // Mostre o conteúdo
+    document.getElementById('content').style.display = 'block';
+
+    // Inicialize o mapa após o conteúdo ser exibido
+    initializeMap();
+
+    // Dispare um evento de redimensionamento do mapa
+    window.dispatchEvent(new Event('resize'));
+  }, 2000); // Simulando um tempo de carregamento de 3 segundos
+</script>

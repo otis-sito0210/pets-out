@@ -1,43 +1,111 @@
-<div style="margin: 15px;">
-  <h1>Houses in <strong><%= @city.local %></strong></h1>
-</div>
+<style>
+#colorful {
+   width: 31.4px;
+   height: 31.4px;
+   border-radius: 50%;
+   background: #2ed3ff;
+   transform-origin: top;
+   display: grid;
+   animation: colorful-3vgb5t 1s infinite linear;
+}
 
+#colorful::before,
+#colorful::after {
+   content: "";
+   grid-area: 1/1;
+   background: #619eff;
+   border-radius: 50%;
+   transform-origin: top;
+   animation: inherit;
+   animation-name: colorful-k94uub;
+}
 
+#colorful::after {
+   background: #474bff;
+   --s: 180deg;
+}
 
-  <div class="card-places-container m-3">
+@keyframes colorful-3vgb5t {
+   0%, 20% {
+      transform: rotate(0);
+   }
 
-      <% @places.each do |place| %>
-        <div class="card-places">
-          <%= cl_image_tag place.photo.key, height: 400, width: 500, crop: :fill if place.photo.attached? %>
+   100% {
+      transform: rotate(360deg);
+   }
+}
 
-          <div class="card-places-infos p-3">
-            <div class="card-places-text">
-              <h2> <%=  place.title %> </h2>
-              <p>  <%=  place.subtitle %> </p>
-              <p>  Address: <%=  place.address %> </p>
-              <p>  Rooms: <%=  place.rooms %> </p>
-              <p>  Details: <%=  place.details %> </p>
+@keyframes colorful-k94uub {
+   50% {
+      transform: rotate(var(--s,90deg));
+   }
+
+   100% {
+      transform: rotate(0);
+   }
+}
+
+#content {
+      display: none;
+    }
+
+.container-map {
+    overflow: hidden; /* Evita que o mapa ultrapasse os limites do contêiner */
+  }
+
+</style>
+
+<center><div id="colorful" style="margin-top: 450px;"></div></center>
+
+<div id="content">
+
+  <div style="margin: 15px;">
+    <h1>Houses in <strong><%= @city.local %></strong></h1>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0px 10px;">
+
+    <!-- Coluna Esquerda (Places) -->
+    <div style="width: 80%;">
+      <% @places.each_slice(3) do |places_chunk| %>
+        <div style="display: flex; gap: 1px; margin-bottom: 5px;">
+          <% places_chunk.each do |place| %>
+            <div class="card-places" style="flex: 1; margin-top: 10px;">
+              <%= cl_image_tag place.photo.key, height: 400, width: 500, crop: :fill if place.photo.attached? %>
+
+              <div class="card-places-infos p-3">
+                <div class="card-places-text">
+                  <h2> <%=  place.title %> </h2>
+                  <p>  <%=  place.subtitle %> </p>
+                  <p>  Address: <%=  place.address %> </p>
+                  <p>  Rooms: <%=  place.rooms %> </p>
+                  <p>  Details: <%=  place.details %> </p>
+                </div>
+                <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
+              </div>
+
+              <div class="card-places-btn mb-4 mt-3 m-2">
+                <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn-donate m-10" %>
+              </div>
             </div>
-            <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
-          </div>
-
-          <div class="card-places-btn mb-4 mt-3 m-2">
-            <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn-donate m-10" %>
-          </div>
-
-          <div style="width: 100%; height: 400px;"
-            data-controller="map"
-            data-map-markers-value="<%= @markers.to_json %>"
-            data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
-          </div>
-
+          <% end %>
         </div>
       <% end %>
+    </div>
 
-
-  
+    <!-- Coluna Direita (Mapa) -->
+    <div class="container-map" style="height: calc(70vh - 100px); margin-top: 10px; margin-right: 20px; width: 45%;">
+      <div style="height: 100%;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+    </div>
 </div>
 
+
+
+
 <br>
 <br>
 <br>
@@ -50,3 +118,26 @@
 <br>
 <br>
 <br>
+
+<script>
+  function initializeMap() {
+    // Inicialize o mapa aqui
+    // Certifique-se de que o contêiner do mapa tem uma altura definida corretamente
+  }
+
+  // Simule o carregamento por 6 segundos (substitua isso pela sua lógica real de carregamento)
+  setTimeout(function() {
+    // Oculte o dot de carregamento
+    document.getElementById('colorful').style.display = 'none';
+
+    // Mostre o conteúdo
+    document.getElementById('content').style.display = 'block';
+
+    // Inicialize o mapa após o conteúdo ser exibido
+    initializeMap();
+
+    // Dispare um evento de redimensionamento do mapa
+    window.dispatchEvent(new Event('resize'));
+  }, 3000); // Simulando um tempo de carregamento de 3 segundos
+</script>
+

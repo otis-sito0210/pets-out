@@ -1,0 +1,8 @@
+.container-map {
+  position: fixed;
+  margin-top: 20px; /* Ajuste a posição vertical conforme necessário */
+  right: 5px; /* Ajuste a posição horizontal conforme necessário */
+  height: calc(70vh - 100px);
+  width: 45%;
+  overflow: hidden;
+}

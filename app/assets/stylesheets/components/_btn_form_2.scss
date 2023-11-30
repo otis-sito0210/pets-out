@@ -1,0 +1,35 @@
+.btn-form-2 {
+  --clr-font-main: hsla(0 0% 20% / 100);
+  --btn-bg-1: #D7DDE8; /* Cor de fundo transparente */
+  --btn-bg-2: #D7DDE8;/* Cor de fundo transparente */
+  --btn-bg-color: black; /* Cor do texto */
+  --radii: 0.5em;
+  cursor: pointer;
+  text-decoration: none;
+  margin-top: 20px;
+  padding: 0.9em 1.4em;
+  min-width: 360px;
+  min-height: 44px;
+  font-size: var(--size, 1rem);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  font-weight: 500;
+  transition: 0.8s;
+  background-size: 280% auto;
+  background-image: #D7DDE8;
+  border: none;
+  border-radius: var(--radii);
+}
+
+.btn-form-2:hover {
+  color: #1f75ff; /* Cor do texto ao passar o mouse por cima do botão */
+}
+
+.btn-form-2:is(:focus, :focus-visible, :active) {
+  outline: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-form-2 {
+    transition: linear;
+  }
+}
