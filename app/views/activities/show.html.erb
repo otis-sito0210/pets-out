@@ -23,26 +23,25 @@
           </div>
         <% end %>
       </div>
-
-
-
-    <div class="pet-gpt">
-        <h2>PetGPT</h2>
-        <p>It tells you how well pets from users in this chat will get along and tips</p>
-        <p>
-          <%= @content %>
-        </p>
-      </div>
     </div>
+
+
+    <% if @activity.response.present?  %>
+      <div class="alert-gpt-container">
+        <div class="alert-gpt alert-info alert-dismissible fade show" role="alert">
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+          <h6><strong> PetGPT says: </strong></h6> <%= @activity.response %>
+        </div>
+      </div>
+    <% end %>
 
 
     <div class="container activity-message"
       data-controller="activity-subscription"
-      data-activity-subscription-activity-id-value="<%= @activity.id %>"
-    >
+      data-activity-subscription-activity-id-value="<%= @activity.id %>" >
+
 
       <h1>#<%= @activity.title %></h1>
-      <p><%= @activity.address %></p>
 
 
       <div class="messages" data-activity-subscription-target="meetings">
