@@ -13,5 +13,7 @@ class Place < ApplicationRecord
   validates :pricing, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :rooms, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :details, presence: true
-  validades :photo, presence: true
+  validates :photo, presence: true
+
+  has_many :trips
 end
