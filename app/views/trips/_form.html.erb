@@ -1,37 +1,98 @@
-<div class="container mt-5">
+<%# <style>
+#colorful {
+   width: 31.4px;
+   height: 31.4px;
+   border-radius: 50%;
+   background: #2ed3ff;
+   transform-origin: top;
+   display: grid;
+   animation: colorful-3vgb5t 1s infinite linear;
+}
 
-<h1><strong>Schedule your trip</strong>   <i class="fa-solid fa-plane-departure"></i></h1>
+#colorful::before,
+#colorful::after {
+   content: "";
+   grid-area: 1/1;
+   background: #619eff;
+   border-radius: 50%;
+   transform-origin: top;
+   animation: inherit;
+   animation-name: colorful-k94uub;
+}
 
-<p><i class="fa-regular fa-calendar"></i>       How long you're <strong>staying?</strong></p>
+#colorful::after {
+   background: #474bff;
+   --s: 180deg;
+}
 
-  <%= simple_form_for([place, trip]) do |form| %>
+@keyframes colorful-3vgb5t {
+   0%, 20% {
+      transform: rotate(0);
+   }
 
-    <div class="form-actions">
-      <%= form.input :start_date, as: :date, html5: true %>
-      <%= form.input :end_date, as: :date, html5: true %>
+   100% {
+      transform: rotate(360deg);
+   }
+}
 
+@keyframes colorful-k94uub {
+   50% {
+      transform: rotate(var(--s,90deg));
+   }
 
-      <%= form.button :submit, 'Create Trip', class: 'btn-donate' %>
-      <%= form.button :submit, 'Back', class: 'btn-donate' %>
+   100% {
+      transform: rotate(0);
+   }
+}
+
+#content {
+      display: none;
+    }
+
+</style>
+
+<center><div id="colorful" style="margin-top: 450px;"></div></center>
+
+<div id="content"> %>
+  <div class="container_form">
+
+    <div class="container mt-3">
+
+      <h2><strong>Schedule your trip</strong>   <i class="fa-solid fa-plane-departure"></i></h2>
+
+      <p><i class="fa-regular fa-calendar"></i>       How long you're <strong>staying?</strong></p>
+
+      <%= simple_form_for([place, trip]) do |form| %>
+
+        <div class="form-actions">
+          <%= form.input :start_date, as: :date, html5: true %>
+          <%= form.input :end_date, as: :date, html5: true %>
+
+          <%= button_tag 'Create Trip', type: 'submit', class: 'btn-donate mt-0' %>
+          <%= button_tag 'Back', class: 'btn', role: 'button', style: 'text-decoration: none', onclick: 'javascript:history.back();' %>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
 
+  </div>
 
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+<%# </div> %>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<%# <script>
+  // Simule o carregamento por 6 segundos (substitua isso pela sua lógica real de carregamento)
+  setTimeout(function() {
+    // Oculte o dot de carregamento
+    document.getElementById('colorful').style.display = 'none';
+
+    // Mostre o conteúdo
+    document.getElementById('content').style.display = 'block';
+  }, 3000); // Simulando um tempo de carregamento de 6 segundos
+</script> %>

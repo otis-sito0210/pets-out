@@ -11,22 +11,43 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css" rel="stylesheet">
   </head>
 
-  <body><%= render "shared/navbar" %>
-<%= render "shared/flashes" %>
+  <body>
+        <%= render "shared/navbar" %>
+        <%# <%= render "shared/flashes" %>
+
+    <div class="notification">
+      <% if notice %>
+        <% if notice.include?('Signed in') %>
+          <div class="alert alert-success sign-in-notice">
+            <%= notice %>
+          </div>
+        <% elsif notice.include?('Signed out') %>
+          <div class="alert alert-danger sign-out-notice">
+            <%= notice %>
+          </div>
+        <% else %>
+          <div class="alert alert-info">
+            <%= notice %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
 
     <%= yield %>
+        <%= render "shared/footer" %>
   </body>
-
-<footer class="footer">
-  <div>
-    <p>&copy; <%= Time.now.year %> • Pets Out® • All rights reserved.</p>
-    <i class="fa-brands fa-facebook"></i>
-    <i class="fa-brands fa-linkedin"></i>
-    <i class="fa-brands fa-instagram"></i>
-    <i class="fa-brands fa-youtube"></i>
-    <i class="fa-brands fa-github"></i>
-    <i class="fa-brands fa-twitter"></i>
-  </div>
-</footer>
-
 </html>
+
+<script>
+  // espera 3 segundos e adiciona a classe "hidden"
+  setTimeout(function() {
+    document.querySelector('.notification').classList.add('hidden');
+  }, 3000);
+</script>
+
+<style>
+.notification.hidden {
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+</style>

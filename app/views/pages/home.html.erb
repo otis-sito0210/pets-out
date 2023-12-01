@@ -1,7 +1,70 @@
-<%# banner %>
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://plus.unsplash.com/premium_photo-1663091202352-a19c438ca22d?auto=format&fit=crop&q=80&w=1470&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);">
+<style>
+#colorful {
+   width: 31.4px;
+   height: 31.4px;
+   border-radius: 50%;
+   background: #2ed3ff;
+   transform-origin: top;
+   display: grid;
+   animation: colorful-3vgb5t 1s infinite linear;
+}
+
+#colorful::before,
+#colorful::after {
+   content: "";
+   grid-area: 1/1;
+   background: #619eff;
+   border-radius: 50%;
+   transform-origin: top;
+   animation: inherit;
+   animation-name: colorful-k94uub;
+}
+
+#colorful::after {
+   background: #474bff;
+   --s: 180deg;
+}
+
+@keyframes colorful-3vgb5t {
+   0%, 20% {
+      transform: rotate(0);
+   }
+
+   100% {
+      transform: rotate(360deg);
+   }
+}
+
+@keyframes colorful-k94uub {
+   50% {
+      transform: rotate(var(--s,90deg));
+   }
+
+   100% {
+      transform: rotate(0);
+   }
+}
+
+#content {
+      display: none;
+    }
+
+.container-map {
+    overflow: hidden; /* Evita que o mapa ultrapasse os limites do contêiner */
+  }
+
+</style>
+
+<center><div id="colorful" style="margin-top: 450px;"></div></center>
+
+<div id="content">
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)),
+  url(https://img.freepik.com/fotos-gratis/cachorro-feliz-como-passageiro-de-carro_329181-19676.jpg?w=1380&t=st=1701367420~exp=1701368020~hmac=96fb979fb9c2e0d6b32cced28b9feadffd4ff4259b26707a53325266ff4dea44);
+  background-size: 100%; background-position: center">
+
   <div class="container">
-    <h1>Pets out! </h1>
+    <h1>Pets Out! </h1>
     <p>Travel assistant for amazing trips with your pets</p>
     <div class="col-sm-8 my-3">
       <%= form_with url: root_path, method: :get, class: "d-flex" do %>
@@ -16,13 +79,12 @@
   </div>
 </div>
 
- <%= link_to "Add city", new_city_path, class: "btn-donate" %>
+ <%# <%= link_to "Add city", new_city_path, class: "btn-donate" %>
 
-<div class="container_cities">
+<div class="container_cities mt-5">
   <h1>Popular pet-friendly <strong>cities</strong> </h1>
 
   <div class="parent" p-5 >
-
       <% if @city.present? %>
     <div class="card-trip mt-2">
       <%= cl_image_tag @city.photo.key, height: 400, width: 500, crop: :fill if @city.photo.attached? %>
@@ -35,7 +97,7 @@
     </div>
 
     <% else %>
-      <% @cities.first(10).each do |city| %>
+      <% @cities.first(12).each do |city| %>
       <div class="card-trip mt-2">
         <%= cl_image_tag city.photo.key, height: 400, width: 500, crop: :fill if city.photo.attached? %>
 
@@ -47,17 +109,13 @@
       </div>
         <% end %>
       <% end %>
-
   </div>
 </div>
 
-
 <div class="container_activities">
       <h1>Most upvoted <strong>activities</strong></h1>
-
   <div class="parent" p-5 >
-
-        <% @activities.last(2).each do |a| %>
+        <% @activities.first(10).each do |a| %>
         <div class="card-product mt-2">
           <%= cl_image_tag a.photo.key, height: 400, width: 500, crop: :fill if a.photo.attached? %>
 
@@ -67,10 +125,26 @@
             <p>in <%= a.city.local %></p>
           </div>
         </div>
-
         <% end %>
   </div>
 </div>
 
+<script>
+  function initializeMap() {
+    // Inicialize o mapa aqui
+    // Certifique-se de que o contêiner do mapa tem uma altura definida corretamente
+  }
 
+  // Simule o carregamento por 6 segundos (substitua isso pela sua lógica real de carregamento)
+  setTimeout(function() {
+    // Oculte o dot de carregamento
+    document.getElementById('colorful').style.display = 'none';
+
+    // Mostre o conteúdo
+    document.getElementById('content').style.display = 'block';
+
+    // Dispare um evento de redimensionamento do mapa
+    window.dispatchEvent(new Event('resize'));
+  }, 3000); // Simulando um tempo de carregamento de 3 segundos
+</script>
 <!-- app/views/shared/_footer.html.erb -->
