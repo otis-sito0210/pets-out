@@ -1,0 +1,51 @@
+.container-chat {
+  display: flex;
+  justify-content: space-between;
+}
+
+.users-and-pets {
+  display: flex;
+  flex-direction: column;
+  // width: 1000px;
+}
+
+.users-in-chat, .pet-gpt {
+  width: 48%; /* Adjust as needed */
+}
+
+.activity-message {
+  width: 48%; /* Adjust as needed */
+}
+
+.user-pets {
+  margin-bottom: 20px; /* Adjust as needed for spacing between users */
+
+}
+
+.pet-list {
+  display: flex;
+}
+
+.pet-item {
+  display: flex;
+  flex-direction: column; /* Display pet image on top of pet info */
+  margin-right: 20px; /* Adjust as needed for spacing between pets */
+}
+
+.pet-avatar {
+  width: 75px; /* Adjust as needed */
+  height: 75px; /* Adjust as needed */
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.pet-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pet-info {
+  text-align: center; /* Center align pet information */
+  /* Add any additional styling for pet information */
+}

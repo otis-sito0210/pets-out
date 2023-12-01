@@ -1,47 +1,69 @@
-
 <div class="container">
-  <h1>In this activity: </h1>
-  <% @users.each do |user| %>
-  <h2><strong> <%= user.nickname %></strong></h2>
-    <% user.pets.each do |pet|  %>
-    <h4> <%= pet.name %> </h4>
-    <p> <%= pet.breed %> </h4>
+  <div class="container-chat">
+
+    <div class="users-and-pets">
+      <div class="users-in-chat">
+        <h1><strong>People and dogs</strong> in this activity:</h1>
+        <% @users.each do |user| %>
+          <div class="user-pets">
+            <h2><strong><%= user.nickname %></strong></h2>
+            <div class="pet-list">
+              <% user.pets.each do |pet| %>
+                <div class="pet-item">
+                  <div class="pet-avatar">
+                    <%= cl_image_tag pet.photo.key, height: 50, width: 50, crop: :fill, class: 'rounded-circle' if pet.photo.attached? %>
+                  </div>
+                  <div class="pet-info">
+                    <h4><%= pet.name %></h4>
+                    <p><%= pet.breed %></p>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+
+    <% if @activity.response.present?  %>
+      <div class="alert-gpt-container">
+        <div class="alert-gpt alert-info alert-dismissible fade show" role="alert">
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+          <h6><strong> PetGPT says: </strong></h6> <%= @activity.response %>
+        </div>
+      </div>
     <% end %>
-  <% end %>
-
-  <h2>PetGPT</h2>
-  <h4>It tells you how well pets from users in this chat will get along and tips</h4>
-  <p>
-    <%= @content %>
-  </p>
-</div>
 
 
-<div class="container activity-message"
-  data-controller="activity-subscription"
-  data-activity-subscription-activity-id-value="<%= @activity.id %>"
->
+    <div class="container activity-message"
+      data-controller="activity-subscription"
+      data-activity-subscription-activity-id-value="<%= @activity.id %>" >
 
-  <h1>#<%= @activity.title %></h1>
 
-  <div class="messages" data-activity-subscription-target="meetings">
-    <% @activity.meetings.each do |meeting| %>
-      <% render "meetings/meeting", meeting: meeting %>
-      <% end %>
+      <h1>#<%= @activity.title %></h1>
+
+
+      <div class="messages" data-activity-subscription-target="meetings">
+        <% @activity.meetings.each do |meeting| %>
+          <%= render "meetings/meeting", meeting: meeting %>
+          <% end %>
+      </div>
+
+
+
+      <%= simple_form_for [@activity, @meeting],
+      html: { data: { action: "turbo:submit-end->activity-subscription#resetForm" },
+      class: "d-flex" } do |f| %>
+
+      <%= f.input :content,
+        label: false,
+        placeholder: "Message ##{@activity.title}",
+        wrapper_html: {class: "flex-grow-1"}
+      %>
+      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
+    <% end %>
+
+    </div>
   </div>
-
-
-
-  <%= simple_form_for [@activity, @meeting],
-  html: { data: { action: "turbo:submit-end->activity-subscription#resetForm" },
-  class: "d-flex" } do |f| %>
-
-  <%= f.input :content,
-    label: false,
-    placeholder: "Message ##{@activity.title}",
-    wrapper_html: {class: "flex-grow-1"}
-  %>
-  <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-<% end %>
-
 </div>
