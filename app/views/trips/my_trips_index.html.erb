@@ -16,7 +16,7 @@
             <p> <%= trip.place.address %> </p>
             <p> Starts in <%= trip.start_date %>  </p>
             <p> Ends in <%= trip.end_date %>  </p>
-            
+
             <h6> Your appointments:</h6>
               <% trip.appointments.each do |appointment| %>
               <h1>  <%= appointment.activity.title %>  </h1>
