@@ -1,0 +1,20 @@
+
+.alert-gpt-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 20%;
+  right: 20%;
+  bottom: 0;
+}
+
+.alert-gpt {
+  background-color: #5294db;
+  color: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  text-align: center;
+}

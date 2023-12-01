@@ -6,5 +6,5 @@ class Trip < ApplicationRecord
   validates  :end_date, presence: true
 
   has_many :appointments
-  has_many :cities, through: :places
+  has_one :city, through: :place
 end

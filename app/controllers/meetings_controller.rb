@@ -7,7 +7,7 @@ class MeetingsController < ApplicationController
     if @meeting.save
       ActivityChannel.broadcast_to(
       @activity,
-    render_to_string(partial: "meeting", locals: {meeting: @meeting})
+      render_to_string(partial: "meeting", locals: {meeting: @meeting})
       )
       head :ok
     else
