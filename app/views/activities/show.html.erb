@@ -28,7 +28,7 @@
 
     <% if @activity.response.present?  %>
       <div class="alert-gpt-container">
-        <div class="alert-gpt alert-info alert-dismissible fade show" role="alert">
+        <div class="alert alert-gpt alert-info alert-dismissible fade show" role="alert">
           <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
           <h6><strong> PetGPT says: </strong></h6> <%= @activity.response %>
         </div>
