@@ -1,0 +1,42 @@
+.container_pet {
+  max-width: 900px;
+  max-height: 1200px;
+  margin: 0 auto;
+  padding: 50px;
+  background-color: rgba(251, 252, 253, 0.719);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 15px;
+}
+
+.card {
+  margin-top: 20px;
+  width: 250px;
+  height: 150px;
+  border-radius: 20px;
+  border: 2px solid #c3c6ce;
+}
+
+.card-inner {
+  display: flex;
+  flex-direction: column;
+  width: 246px;
+  height: 150px;
+  border-radius: 20px;
+  border: 2px solid #c3c6ce;
+}
+
+.card-front,
+.card-back {
+  padding: 1.8rem;
+  align-items: center;
+}
+
+.card-back {
+  font-size: 13px;
+  line-height: 0.8; /* Adjust the value as needed, usually a value between 1 and 1.5 */
+}
+
+.pet-image {
+  border: 2px solid #c3c6ce;
+  border-radius: 10px;
+}

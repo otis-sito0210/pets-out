@@ -1,18 +1,24 @@
-<div class="container mt-3">
-  <p><strong>Edit Pet</strong></p>
+<div class="container_form mt-5 ">
+  <div class="container mt-3">
+    <p><strong>Edit Pet</strong></p>
 
-  <%= simple_form_for(@pet) do |form| %>
+    <%= simple_form_for(@pet) do |form| %>
 
-    <div class="form-actions">
-      <%= form.input :name %>
-      <%= form.input :age %>
-      <%= form.input :size %>
-      <%= form.input :breed %>
-      <%= form.input :details %>
-      <%= form.input :photo, as: :file %>
+      <div class="form-actions">
+        <%= form.input :name %>
+        <%= form.input :age %>
+        <%= form.input :size %>
+        <%= form.input :breed %>
+        <%= form.input :details %>
+        <%= form.input :photo, as: :file %>
 
-      <%= form.button :submit, 'Update Pet', class: 'btn-donate' %>
-    </div>
-  <% end %>
+        <%= form.button :submit, 'Update Pet', class: 'btn-donate' %>
+        <%= button_tag 'Back', class: 'btn', role: 'button', style: 'text-decoration: none', onclick: 'javascript:history.back();' %>
+      </div>
+    <% end %>
 
+  </div>
 </div>
+
+<br>
+<br>

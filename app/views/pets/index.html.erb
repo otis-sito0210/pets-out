@@ -59,18 +59,32 @@
 
 <div id="content">
 
-<div class="container">
-<h1 class="mt-5"> Your Pets </h1>
-<%= link_to "Add Pet", new_pet_path, class:"btn-donate"%>
-    <div class="cards mt-5">
-      <% @pets.each do |pet| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
-          url(<%= cl_image_path(pet.photo.key, height: 300, width: 400, crop: :fill)  if pet.photo.attached? %>)">
-          <%= link_to pet.name, pet, class:"pet-name"%>
-        </div>
-      <% end %>
-    </div>
+<div class="container mt-5">
+  <h1 class="mt-15"><strong>Your Pets</strong></h1>
 </div>
+
+<div class="container mt-3">
+  <%= link_to "Add Pet", new_pet_path, class:"btn-donate mt-5"%>
+</div>
+
+<div class="cards-container">
+  <% @pets.each do |pet| %>
+    <div class="card">
+        <% if pet.photo.attached? %>
+          <%= image_tag cl_image_path(pet.photo.key), class: "card-image", alt: "Pet Image" %>
+        <% end %>
+      <div class="card-details">
+    </div>
+
+    <button class="card-button">
+      <%= link_to pet.name, pet, class: "pet-name" %>
+    </button>
+  </div>
+
+    <% end %>
+</div>
+
+
 
 <br>
 <br>
