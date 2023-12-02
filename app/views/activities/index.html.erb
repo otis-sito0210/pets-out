@@ -1,21 +1,69 @@
-<div class="container mt-3">
+<div style="margin-left: 20px; padding-top: 50px;">
   <h1> Atividades na cidade de <strong><%= @city.local %></strong></h1>
+</div>
+
+<div class="container mt-3 p-3">
   <% @activities.last(2).each do |activity| %>
     <div class="card-product mt-2">
-      <%= cl_image_tag activity.photo.key, height: 400, width: 500, crop: :fill if activity.photo.attached? %>
+      <img class="lightbox-trigger" <%= cl_image_tag activity.photo.key, height: 400, width: 500, crop: :fill if activity.photo.attached? %>
 
       <div class="card-product-infos">
-        <h2> <%= activity.title %> </h2>
-        <p><%= activity.subtitle %></p>
-        <p> <%= activity.address %> </p>
-        <p> <%= activity.details %> </p>
+        <h2><%= activity.title %> </h2>
+        <p><strong>Info:</strong> <%= activity.subtitle %></p>
+        <p><strong>Adress:</strong> <%= activity.address %> </p>
+        <p><strong>Details:</strong> <%= activity.details %> </p>
+
+      <div class="custom-container">
+        <%= link_to "Make appointment", new_appointment_path(trip_id: @trip.id, activity_id: activity.id), class: "btn-form-1 btn-make-appointment" %>
       </div>
 
-      <%= link_to "Make appointment",  new_appointment_path(trip_id: @trip.id, activity_id: activity.id), class: "btn btn-primary" %>
     </div>
   <% end %>
 </div>
 
+<div class="lightbox" id="lightbox">
+  <span class="close-btn" onclick="closeLightbox()">&times;</span>
+  <img src="" alt="" id="lightbox-img">
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $(".lightbox-trigger").click(function() {
+      openLightbox($(this).attr("src"), $(this).attr("alt"));
+    });
+  });
+
+  function openLightbox(src, alt) {
+    $("#lightbox-img").attr("src", src);
+    $("#lightbox-img").attr("alt", alt);
+    $(".lightbox").fadeIn(300);
+  }
+
+  function closeLightbox() {
+    $(".lightbox").fadeOut(300);
+  }
+</script>
+
+    <%# <div class="container mt-3 p-3">
+       <% @activities.last(2).each do |activity| %>
+        <%# <div class="card-product mt-2">
+          <%= cl_image_tag activity.photo.key, height: 400, width: 500, crop: :fill if activity.photo.attached?%>
+
+          <%# <div class="card-product-infos">
+            <h2><%= activity.title %>
+            <%# <p><strong>Info:</strong> <%= activity.subtitle %>
+            <%# <p><strong>Adress:</strong> <%= activity.address %>
+            <%# <p><strong>Details:</strong> <%= activity.details %>
+          <%# </div>
+
+            <div class="button-container">
+            <%= link_to "Make appointment", new_appointment_path(trip_id: @trip.id, activity_id: activity.id), class: "btn-form-1 btn-make-appointment" %>
+          <%# </div>
+
+        </div>
+      <% end %>
+    <%# </div> %>
 <br>
 <br>
 <br>

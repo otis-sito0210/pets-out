@@ -1,14 +1,17 @@
-<div class="container mt-3">
+<div class="container_form">
+  <div class="container mt-3">
+    <h2><i class="fa-solid fa-calendar-days"></i> <strong>Make Appointment</strong></h2>
+    <%= simple_form_for(@appointment) do |form| %>
+      <div class="form-actions">
+        <%= form.input :date, as: :date, html5: true %>
+        <%= form.input :hour %>
+        <%= form.input :trip_id, input_html: { value: @trip.id }, wrapper_html: { class: "d-none"} %>
+        <%= form.input :activity_id, input_html: { value: @activity.id }, wrapper_html: { class: "d-none"} %>
 
-  <%= simple_form_for(@appointment) do |form| %>
-
-    <div class="form-actions">
-      <%= form.input :date, as: :date, html5: true %>
-      <%= form.input :hour %>
-      <%= form.input :trip_id, input_html: { value: @trip.id }, wrapper_html: { class: "d-none"} %>
-      <%= form.input :activity_id, input_html: { value: @activity.id }, wrapper_html: { class: "d-none"} %>
-
-      <%= form.button :submit, 'Set appointment', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+        <%# <%= form.button :submit, 'Set appointment', class: 'btn-form-1' %>
+        <%= button_tag 'Set appointment', type: 'submit', class: 'btn-donate mt-0' %>
+        <%= button_tag 'Back', class: 'btn', role: 'button', style: 'text-decoration: none', onclick: 'javascript:history.back();' %>
+      </div>
+    <% end %>
+  </div>
 </div>

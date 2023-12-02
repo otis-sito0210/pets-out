@@ -1,18 +1,21 @@
-<div class="container mt-3">
-  <p><strong>New Activity</strong></p>
+<div class="container_form">
+  
+  <div class="container mt-3">
+    <p><strong>New Activity</strong></p>
 
-  <%= simple_form_for([@city, @activity]) do |form| %>
+    <%= simple_form_for([@city, @activity]) do |form| %>
 
-    <div class="form-actions">
-      <%= form.input :title %>
-      <%= form.input :subtitle %>
-      <%= form.input :address %>
-      <%= form.input :details %>
-      <%= form.input :photo, as: :file %>
+      <div class="form-actions">
+        <%= form.input :title %>
+        <%= form.input :subtitle %>
+        <%= form.input :address %>
+        <%= form.input :details %>
+        <%= form.input :photo, as: :file %>
 
-      <%= form.button :submit, 'Create Activity', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+        <%= form.button :submit, 'Create Activity', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
 
-  <%# <%= link_to 'Back', root, class: 'btn btn-secondary mt-2' %>
+    <%# <%= link_to 'Back', root, class: 'btn btn-secondary mt-2' %>
+  </div>
 </div>

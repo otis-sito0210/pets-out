@@ -1,14 +1,18 @@
-<div class="container mt-3">
-  <p><strong>New City</strong></p>
+<div class="container_form">
 
-  <%= simple_form_for(@city) do |form| %>
+  <div class="container mt-3">
+    <p><strong>New City</strong></p>
 
-    <div class="form-actions">
-      <%= form.input :local %>
-      <%= form.input :photo, as: :file %>
+    <%= simple_form_for(@city) do |form| %>
 
-      <%= form.button :submit, 'Create City', class: 'btn btn-primary' %>
-    </div>
-  <% end %>
+      <div class="form-actions">
+        <%= form.input :local %>
+        <%= form.input :photo, as: :file %>
+
+        <%= button_tag 'Create City', type: 'submit', class: 'btn-form-1' %>
+      </div>
+    <% end %>
+
+  </div>
 
 </div>
