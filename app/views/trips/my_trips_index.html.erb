@@ -65,7 +65,7 @@
 </div>
 
 <%# Flip Card %>
-<div class="parent" p-5>
+<div class="parent_trip" p-5>
   <% @trips.each do |trip| %>
     <div class="flip-card">
       <div class="flip-card-inner">
@@ -74,11 +74,11 @@
         </div>
 
         <div class="flip-card-back mt-2">
-          <div class="card-places" style="flex: 1; margin-top: 10px;">
-            <%= cl_image_tag trip.place.city.photo.key, height: 100, width: 200, crop: :fill if trip.place.city.photo.key %>
-          </div>
-          <h4 style="margin-top: 10px;"><strong><%= trip.place.title %></strong></h4>
-           <div style="margin-top: 5px; margin-right: 5px; text-align: left; padding: 30px; line-height: 0.8;">
+          <%# <div> %>
+            <%# <%= cl_image_tag trip.place.city.photo.key, height: 100, width: 200, crop: :fill if trip.place.city.photo.key %>
+          <%# </div> %>
+          <h4 style="margin-top: 40px;"><strong><%= trip.place.title %></strong></h4>
+           <div style="margin-right: 5px; text-align: left; padding: 10px; line-height: 0.8;">
             <p><strong>Adress:</strong> <%= trip.place.address %> </p>
             <p><strong>Details:</strong> <%= trip.place.subtitle %> </p>
             <p><strong>Starts in:</strong> <%= trip.start_date %> </p>
@@ -86,12 +86,19 @@
           </div>
 
           <!-- Include appointments for this trip -->
-          <h6> Your appointments:</h6>
+          <h4><strong>Your appointments:</strong></h4>
           <% trip.appointments.each do |appointment| %>
-            <h1> <%= appointment.activity.title %> </h1>
-            <%= link_to "Activity Chat", activity_path(appointment.activity.id), class: "btn-donate" %>
-            <p> <%= appointment.hour %> </p>
-            <p> <%= appointment.date %> </p>
+            <h5> <%= appointment.activity.title %> </h5>
+
+            <div style="margin-right: 5px; text-align: left; padding: 20px; line-height: 0.8;">
+              <p><strong>Hour:</strong> <%= appointment.hour %></p>
+              <p><strong>Date:</strong> <%= appointment.date %></p>
+            </div>
+
+            <div style="margin-top: 20px;">
+              <%= link_to "Activity Chat", activity_path(appointment.activity.id), class: "btn-donate" %>
+            </div>
+
           <% end %>
         </div>
       </div>
@@ -119,10 +126,7 @@
     // Mostre o conteúdo
     document.getElementById('content').style.display = 'block';
 
-    // Inicialize o mapa após o conteúdo ser exibido
-    initializeMap();
-
     // Dispare um evento de redimensionamento do mapa
     window.dispatchEvent(new Event('resize'));
-  }, 2000); // Simulando um tempo de carregamento de 3 segundos
+  }, 500); // Simulando um tempo de carregamento de 3 segundos
 </script>
