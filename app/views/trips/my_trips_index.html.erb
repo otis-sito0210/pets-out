@@ -60,7 +60,7 @@
 
 <div id="content">
 
-<div class="container text-center mt-5 p-5">
+<div class="container text-center p-5">
    <h1><i class="fa-solid fa-suitcase"></i>     <strong>My trips</strong></h1>
 </div>
 
@@ -78,9 +78,9 @@
             <%= cl_image_tag trip.place.city.photo.key, height: 100, width: 200, crop: :fill if trip.place.city.photo.key %>
           </div>
           <h4 style="margin-top: 10px;"><strong><%= trip.place.title %></strong></h4>
-           <div style="margin-top: 5px; margin-right: 5px; text-align: left; padding: 10px">
-            <p><strong>Details:</strong> <%= trip.place.subtitle %> </p>
+           <div style="margin-top: 5px; margin-right: 5px; text-align: left; padding: 30px; line-height: 0.8;">
             <p><strong>Adress:</strong> <%= trip.place.address %> </p>
+            <p><strong>Details:</strong> <%= trip.place.subtitle %> </p>
             <p><strong>Starts in:</strong> <%= trip.start_date %> </p>
             <p><strong>Ends in:</strong> <%= trip.end_date %> </p>
           </div>
