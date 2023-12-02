@@ -27,6 +27,7 @@ class ActivitiesController < ApplicationController
     @activity = Activity.find(params[:id])
     @meeting = Meeting.new
 
+    PetgptJob.perform_later(@activity.id)
 
     @appointments = Appointment.where(activity_id: @activity.id)
 
@@ -34,32 +35,8 @@ class ActivitiesController < ApplicationController
     @appointments.each do |appointment|
       trip = Trip.find(appointment.trip.id)
       user = User.find(trip.user.id)
-      @users << user
+      @users << user unless @users.include?(user)
     end
-
-    client = OpenAI::Client.new
-
-
-    @users.each do |user|
-      pets_chat = user.pets.map do |pet|
-        {
-          role: "user",
-          content: "Tell me how well #{pet.name}, a #{pet.breed}, gets along with other pets. Give a playful rating (0 to 100) for their potential to have fun together. Also, suggest some activities they can do to enjoy each other's company, using #{pet.details} as mains reference. Be concise and specific, using bullet points for each dog."
-        }
-      end
-
-      chat_response = client.chat(parameters: {
-        model: "gpt-3.5-turbo",
-        messages: pets_chat
-      })
-
-      # Extract the assistant's response for the current user's pets
-      @content = chat_response["choices"][0]["message"]["content"]
-
-      # # Do something with the assistant_response, like storing it for later use or displaying it to the user
-      # puts "Assistant response for #{user.name}'s pets: #{assistant_response}"
-      end
-
   end
 
   def edit
@@ -78,6 +55,6 @@ class ActivitiesController < ApplicationController
 
   private
   def activity_params
-    params.require(:activity).permit(:title, :subtitle, :address, :city_id, :details, :photo)
+    params.require(:activity).permit(:title, :subtitle, :address, :city_id, :details, :photo, :response)
   end
 end

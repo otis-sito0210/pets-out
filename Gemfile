@@ -8,6 +8,10 @@ gem "cloudinary"
 
 gem "geocoder", "~> 1.6"
 
+gem "sidekiq", "< 7"
+
+gem "sidekiq-failures", "~> 1.0"
+
 gem "ruby-openai"
 
 gem 'faker'
