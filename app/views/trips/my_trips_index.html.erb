@@ -78,21 +78,21 @@
             <%# <%= cl_image_tag trip.place.city.photo.key, height: 100, width: 200, crop: :fill if trip.place.city.photo.key %>
           <%# </div> %>
           <h4 style="margin-top: 40px;"><strong><%= trip.place.title %></strong></h4>
-           <div style="margin-right: 5px; text-align: left; padding: 10px; line-height: 0.8;">
+           <div style="margin-right: 5px; text-align: left; padding: 10px; line-height: 1;">
             <p><strong>Adress:</strong> <%= trip.place.address %> </p>
             <p><strong>Details:</strong> <%= trip.place.subtitle %> </p>
-            <p><strong>Starts in:</strong> <%= trip.start_date %> </p>
-            <p><strong>Ends in:</strong> <%= trip.end_date %> </p>
+            <p><strong>Starts in:</strong> <%= trip.start_date.strftime('%d/%m/%Y')%> </p>
+            <p><strong>Ends in:</strong> <%= trip.end_date.strftime('%d/%m/%Y') %> </p>
           </div>
 
           <!-- Include appointments for this trip -->
-          <h4><strong>Your appointments:</strong></h4>
+          <h4><strong>Your appointment:</strong></h4>
           <% trip.appointments.each do |appointment| %>
             <h5> <%= appointment.activity.title %> </h5>
 
             <div style="margin-right: 5px; text-align: left; padding: 20px; line-height: 0.8;">
-              <p><strong>Hour:</strong> <%= appointment.hour %></p>
-              <p><strong>Date:</strong> <%= appointment.date %></p>
+              <p><strong>Hour:</strong> <%= appointment.hour.strftime('%H:%M') %></p>
+              <p><strong>Date:</strong> <%= appointment.date.strftime('%d/%m/%Y') %></p>
             </div>
 
             <div style="margin-top: 20px;">
