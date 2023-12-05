@@ -13,9 +13,11 @@
         <p><strong>Adress:</strong> <%= activity.address %> </p>
         <p><strong>Details:</strong> <%= activity.details %> </p>
 
-      <div class="custom-container">
-        <%= link_to "Make appointment", new_appointment_path(trip_id: @trip.id, activity_id: activity.id), class: "btn-form-1 btn-make-appointment" %>
+          <div class="custom-container">
+            <%= link_to "Make appointment", new_appointment_path(trip_id: @trip.id, activity_id: activity.id), class: "btn-form-1 btn-make-appointment" %>
+          </div>
       </div>
+
 
     </div>
   <% end %>

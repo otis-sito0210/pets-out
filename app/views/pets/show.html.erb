@@ -3,29 +3,24 @@
     <div class="row">
       <!-- Left Column for Pet Image -->
       <div class="col-md-5">
-        <%= cl_image_tag(@pet.photo.key, height: 300, width: 400, crop: :fill, style: "border: 2px solid #c3c6ce; border-radius: 10px;") if @pet.photo.attached? %>
+        <%= cl_image_tag(@pet.photo.key, height: 300, width: 400, crop: :fill, style: "border: 2px solid #c3c6ce; border-radius: 90px 30px;") if @pet.photo.attached? %>
 
       </div>
 
       <!-- Right Column for Card and Buttons -->
       <div class="col-md-7">
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <p><%= @pet.name %></p>
-            </div>
-
-            <div class="card-back">
+            <div style="margin-top: 15px">
+              <h2><strong><%= @pet.name %></strong></h2>
               <p><strong>Age:</strong> <%= @pet.age %></p>
               <p><strong>Size:</strong> <%= @pet.size %></p>
               <p><strong>Breed:</strong> <%= @pet.breed %></p>
               <p><strong>Details:</strong> <%= @pet.details %></p>
+            </div>
 
               <div style="margin-top: 26px;">
                 <%= link_to "Edit Pet", edit_pet_path(@pet), class: "btn-donate" %>
                 <%= button_tag 'Back', class: 'btn', role: 'button', style: 'text-decoration: none', onclick: 'javascript:history.back();' %>
               </div>
-
             </div>
           </div>
         </div>

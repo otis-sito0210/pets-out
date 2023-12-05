@@ -66,32 +66,33 @@
   <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 0px 10px;">
 
     <!-- Coluna Esquerda (Places) -->
-    <div style="width: 80%;">
-      <% @places.each_slice(3) do |places_chunk| %>
-        <div style="display: flex; gap: 1px; margin-bottom: 5px;">
-          <% places_chunk.each do |place| %>
-            <div class="card-places" style="flex: 1; margin-top: 10px;">
-              <%= cl_image_tag place.photo.key, height: 400, width: 500, crop: :fill if place.photo.attached? %>
+  <div style="width: 80%;">
+    <% @places.each_slice(3) do |places_chunk| %>
+      <div style="display: flex; gap: 1px; margin-bottom: 5px;">
+        <% places_chunk.each do |place| %>
+          <div class="card-places" style="flex: 1; margin-top: 10px; display: flex; flex-direction: column; position: relative;">
+            <%= cl_image_tag place.photo.key, height: 400, width: 500, crop: :fill if place.photo.attached? %>
 
-              <div class="card-places-infos p-3">
-                <div class="card-places-text">
-                  <h2> <%=  place.title %> </h2>
-                  <p>  <%=  place.subtitle %> </p>
-                  <p>  Address: <%=  place.address %> </p>
-                  <p>  Rooms: <%=  place.rooms %> </p>
-                  <p>  Details: <%=  place.details %> </p>
-                </div>
-                <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
+            <div class="card-places-infos p-3" style="margin-bottom: 20px;">
+              <div class="card-places-text">
+                <h2> <%=  place.title %> </h2>
+                <p>  <%=  place.subtitle %> </p>
+                <p>  Address: <%=  place.address %> </p>
+                <p>  Rooms: <%=  place.rooms %> </p>
+                <p>  Details: <%=  place.details %> </p>
               </div>
-
-              <div class="card-places-btn mb-4 mt-3 m-2">
-                <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn-donate m-10" %>
-              </div>
+              <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
             </div>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+
+            <div class="card-places-btn mt-auto mb-4 m-2">
+              <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn-donate m-10" %>
+            </div>
+            </div>
+
+            <% end %>
+      </div>
+    <% end %>
+</div>
 
     <!-- Coluna Direita (Mapa) -->
     <div class="container-map" style="height: calc(70vh - 100px); margin-top: 10px; margin-right: 20px; width: 45%;">
