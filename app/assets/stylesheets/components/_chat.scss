@@ -10,7 +10,8 @@
 }
 
 .users-in-chat, .pet-gpt {
-  width: 48%; /* Adjust as needed */
+  width: 100%; /* Adjust as needed */
+  margin-top: 30px;
 }
 
 .activity-message {
@@ -18,12 +19,13 @@
 }
 
 .user-pets {
+  margin-top: 30px; /* Adjust as needed for spacing between users and pets */
   margin-bottom: 20px; /* Adjust as needed for spacing between users */
-
 }
 
 .pet-list {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .pet-item {
@@ -46,6 +48,17 @@
 }
 
 .pet-info {
+  width: 80px; /* Adjust as needed */
   text-align: center; /* Center align pet information */
   /* Add any additional styling for pet information */
+}
+
+.pet-info h4 {
+  margin-top: 2px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.pet-info p {
+  font-size: 14px;;
 }

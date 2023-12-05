@@ -1,29 +1,33 @@
 <div class="container">
   <div class="container-chat">
+    <div class="container_users_pets">
+      <div class="users-and-pets">
+        <div class="users-in-chat">
+          <h2><strong>People and dogs</strong> in this activity:</h2>
+            <% @users.each do |user| %>
+            <div class="user-pets">
+                <h4><strong><%= user.nickname.capitalize %></strong></h4>
+                <div class="pet-list">
+                  <% user.pets.each do |pet| %>
+                  <div class="pet-item">
 
-    <div class="users-and-pets">
-      <div class="users-in-chat">
-        <h1><strong>People and dogs</strong> in this activity:</h1>
-        <% @users.each do |user| %>
-          <div class="user-pets">
-            <h2><strong><%= user.nickname %></strong></h2>
-            <div class="pet-list">
-              <% user.pets.each do |pet| %>
-                <div class="pet-item">
-                  <div class="pet-avatar">
-                    <%= cl_image_tag pet.photo.key, height: 50, width: 50, crop: :fill, class: 'rounded-circle' if pet.photo.attached? %>
+                    <div class="pet-avatar">
+                      <%= cl_image_tag pet.photo.key, height: 50, width: 50, crop: :fill, class: 'rounded-circle' if pet.photo.attached? %>
+                    </div>
+
+                    <div class="pet-info">
+                      <h4><%= pet.name %></h4>
+                      <p><%= pet.breed %></p>
+                    </div>
+
                   </div>
-                  <div class="pet-info">
-                    <h4><%= pet.name %></h4>
-                    <p><%= pet.breed %></p>
-                  </div>
+                  <% end %>
                 </div>
-              <% end %>
             </div>
-          </div>
-        <% end %>
-      </div>
+            <% end %>
+        </div>
     </div>
+</div>
 
 
     <% if @activity.response.present?  %>
@@ -35,35 +39,135 @@
       </div>
     <% end %>
 
-
     <div class="container activity-message"
-      data-controller="activity-subscription"
-      data-activity-subscription-activity-id-value="<%= @activity.id %>" >
+        data-controller="activity-subscription"
+        data-activity-subscription-activity-id-value="<%= @activity.id %>">
 
+        <h1>#<%= @activity.title %></h1>
 
-      <h1>#<%= @activity.title %></h1>
-
-
-      <div class="messages" data-activity-subscription-target="meetings">
-        <% @activity.meetings.each do |meeting| %>
-          <%= render "meetings/meeting", meeting: meeting %>
+        <div class="messages" data-activity-subscription-target="meetings">
+          <% @activity.meetings.each do |meeting| %>
+            <%= render "meetings/meeting", meeting: meeting %>
           <% end %>
+        </div>
+
+        <%= simple_form_for [@activity, @meeting],
+          html: { data: { action: "turbo:submit-end->activity-subscription#resetForm" },
+          class: "d-flex flex-column" } do |f| %>
+
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Primeira Coluna (70%) -->
+          <div class="col-md-9 mt-3">
+            <%= f.input :content,
+              label: false,
+              placeholder: "Type your message...",
+              class: "flex-grow-1 mb-3"%>
+          </div>
+          <!-- Segunda Coluna (30%) -->
+          <div class="col-md-3 mt-3">
+            <%= f.submit "Send", class: "btn-chat m-0" %>
+          </div>
+        </div>
       </div>
-
-
-
-      <%= simple_form_for [@activity, @meeting],
-      html: { data: { action: "turbo:submit-end->activity-subscription#resetForm" },
-      class: "d-flex" } do |f| %>
-
-      <%= f.input :content,
-        label: false,
-        placeholder: "Message ##{@activity.title}",
-        wrapper_html: {class: "flex-grow-1"}
-      %>
-      <%= f.submit "Send", class: "btn btn-primary mb-3" %>
-    <% end %>
-
+        <% end %>
     </div>
   </div>
 </div>
+
+
+<br>
+<br>
+<br>
+<br>
+
+<!-- Style Chat -->
+    <%# <style>
+      .activity-message {
+        background-color: #f5f5f5;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin-bottom: 10px;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      .activity-message h1 {
+        background-color: #3a7bd5;
+        color: #fff;
+        font-size: 20px;
+        padding: 15px;
+        margin-top: 15px;
+        border-radius: 15px 15px 0 0;
+      }
+
+      .messages {
+        padding: 10px;
+      }
+
+      .message {
+        display: flex;
+        align-items: flex-start;
+        margin-bottom: 15px;
+      }
+
+      .message img {
+        border-radius: 50%;
+        margin-right: 10px;
+        max-width: 40px;
+        max-height: 40px;
+      }
+
+      .message-content {
+        background-color: #fff;
+        padding: 15px;
+        border-radius: 15px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        width: 100%; /* Permitir que ocupe toda a largura */
+      }
+
+
+      .message-content p {
+        margin: 0;
+      }
+
+      form {
+        margin-bottom: 15px;
+        padding: 15px;
+        background-color: #fff;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        border-top: 1px solid #ddd;
+      }
+
+      form input {
+        /* margin-bottom: 10px; */
+        /* padding: 10px; */
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-size: 16px;
+        outline: none;
+        box-sizing: border-box;
+        width: 100%; /* Inclui a largura da borda e do preenchimento no cálculo da largura */
+        height: 45px;
+      }
+
+      form .btn {
+        padding: 12px;
+        background-color: #3a7bd5;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+        width: 100px;
+        height: 45px;
+      }
+
+      form .btn:hover {
+        background-color: #4b6cb7;
+      }
+      </style> %>
