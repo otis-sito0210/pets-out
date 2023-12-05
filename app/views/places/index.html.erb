@@ -79,13 +79,13 @@
                 <p>  <%=  place.subtitle %> </p>
                 <p>  Address: <%=  place.address %> </p>
                 <p>  Rooms: <%=  place.rooms %> </p>
-                <p>  Details: <%=  place.details %> </p>
+                <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
               </div>
-              <h2 class="card-places-pricing mt-2"> £ <%=  place.pricing %> </h2>
             </div>
 
+
             <div class="card-places-btn mt-auto mb-4 m-2">
-              <%= link_to "Book this place!", new_trip_path(place_id: place.id), class:"btn-donate m-10" %>
+              <%= link_to "Book this place", new_trip_path(place_id: place.id), class:"btn-donate m-10" %>
             </div>
             </div>
 
