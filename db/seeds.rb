@@ -145,8 +145,8 @@ pet9 = Pet.new(
  name: "Perna Longa",
  age: 5,
  size: "Big",
- breed: "sal",
- details: "Meet our delightful pup – always cheerful, playful, affectionate, and the perfect companion. His joy is infectious, loves playtime, and is ever-ready to shower affection. A loyal companion and a true friend, he brightens days with his charming and loving personality."
+ breed: "Dashund",
+ details: "His joy is infectious, loves playtime, and is ever-ready to shower affection. A loyal companion and a true friend, he brightens days with his charming and loving personality."
  )
 pet9.photo.attach(io: file, filename: "#{pet9.name}.png", content_type: "image/png")
 pet9.save!
@@ -223,9 +223,9 @@ file = URI.open("https://res.cloudinary.com/diuukus6j/image/upload/v1701538513/c
 place1 = Place.new(
   city: city10,
   user: user1,
-  title: "Cozy House in the Mountainous Region of Boa Vista",
+  title: "Cozy House in the Mountain",
   subtitle: "Epequem Mountain Range",
-  address:  "RR-321, Boa Vista, CEP 69300-000, Brasil",
+  address:  "RR-321, Boa Vista, Brasil",
   pricing: "180",
   rooms: "4",
   details: "Pousada & Natureza offers accommodations with an outdoor pool, free private parking, and a garden.",
@@ -238,9 +238,9 @@ file = URI.open("https://res.cloudinary.com/diuukus6j/image/upload/v1701540834/A
 place2 = Place.new(
  city: city10,
  user: user1,
- title: "Cozy Home Amidst Nature's Embrace",
- subtitle: "Casa no Campo",
- address:  "Praça do Centro Cívico, Centro, Boa Vista, CEP 69301-380",
+ title: "Amidst Nature's Embrace",
+ subtitle: "Vacation Home",
+ address:  "Praça do Centro Cívico, Centro, Boa Vista",
  pricing: "280",
  rooms: "4",
  details: "Pousada & Natureza provides lodgings featuring an outdoor pool, complimentary private parking, and a lush garden. Enjoy a relaxing stay surrounded by natural beauty and the tranquility of the surroundings. Immerse yourself in the comfort of our accommodations, take a refreshing dip in the outdoor pool, and appreciate the convenience of free private parking. The inviting garden adds a touch of serenity, creating a perfect retreat for nature lovers and those seeking a peaceful escape.",
@@ -253,9 +253,9 @@ file = URI.open("https://res.cloudinary.com/diuukus6j/image/upload/v1701541367/m
 place3 = Place.new(
   city: city10,
   user: user1,
- title: "Comfortable Residence Surrounded by Nature's Beauty",
- subtitle: "Casa no Campo",
- address:  "Praça do Centro Cívico, Centro, Boa Vista, CEP 69301-380",
+ title: "Surrounded by Nature's Beauty",
+ subtitle: "Comfortable Residence ",
+ address:  "Praça do Centro Cívico, Centro, Boa Vista",
  pricing: "280",
  rooms: "4",
  details: "Indulge in the ultimate getaway at Pousada & Natureza, where our lodgings feature an inviting outdoor pool, complimentary private parking, and a lush garden. Immerse yourself in the serenity of natural beauty as you enjoy a relaxing stay. With comfortable accommodations, a refreshing pool for a dip, and the convenience of free parking, our retreat is perfect for nature enthusiasts and those seeking a tranquil escape.",
@@ -271,8 +271,8 @@ file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701538104/c
 place4 = Place.new(
   city: city7,
   user: user1,
-  title: "Beautiful and Pleasant House",
-  subtitle: "Entire space: house in Vila Madalena, Brazil",
+  title: "Beautiful House",
+  subtitle: "House in Vila Madalena, Brazil",
   address:  "Rua Afonso José de Carvalho, 149 - São Paulo,SP - Brasil ",
   pricing: "800",
   rooms: "6",
@@ -289,7 +289,7 @@ place5 = Place.new(
   city: city7,
   user: user1,
   title: "In the heart of Itaim-Bibi",
-  subtitle: "Entire space: apartment in São Paulo, Brazil",
+  subtitle: "Entire space",
   address: "Rua Afonso José de Carvalho, 149 - São Paulo, SP - Brazil",
   pricing: "800",
   rooms: "6",
@@ -303,8 +303,8 @@ file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701538777/c
 place6 = Place.new(
   city: city7,
   user: user1,
-  title: "Downtown Residence in São Paulo",
-  subtitle: "Entire space: apartment in São Paulo, Brazil",
+  title: "Downtown Residence",
+  subtitle: "Day and night adventures",
   address: "Avenida Presidente Juscelino kubitschek, 1909 - São Paulo, SP - Brazil",
   pricing: "800",
   rooms: "6",
@@ -344,7 +344,7 @@ place8.photo.attach(io: file, filename: "#{place8.title}.png", content_type: "im
 place8.save!
 
 
-file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701539147/casa_5_kktios.webp")
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701819825/casa_6_fkehix.jpg")
 place9 = Place.new(
   city: city7,
   user: user1,
@@ -360,7 +360,7 @@ place9.save!
 
 
 
-file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701539147/casa_5_kktios.webp")
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701819867/casa_9_v9gyno.jpg")
 place10 = Place.new(
   city: city7,
   user: user1,
@@ -374,7 +374,7 @@ place10 = Place.new(
 place10.photo.attach(io: file, filename: "#{place10.title}.png", content_type: "image/png")
 place10.save!
 
-file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701539147/casa_5_kktios.webp")
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701819868/casa_7_jdf1r2.jpg")
 place11 = Place.new(
   city: city7,
   user: user1,
@@ -389,7 +389,7 @@ place11.photo.attach(io: file, filename: "#{place11.title}.png", content_type: "
 place11.save!
 
 
-file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701539147/casa_5_kktios.webp")
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701819868/casa_8_jw31ec.jpg")
 place12 = Place.new(
   city: city7,
   user: user1,
@@ -413,17 +413,88 @@ activity1 = Activity.new(
  user: user1,
  title: "Municipal theater",
  subtitle: "Cultural night with your pet",
- address: "Av. Glaycon de Paiva - São Vicente, Boa Vista - RR, 69304-360",
+ address: "Av. Glaycon de Paiva - São Vicente, Boa Vista",
  details: "An enchanting evening of culture and pets. Live performances, pet zones, treats, and a photo booth.",
  response: nil,
 )
 activity1.photo.attach(io: file, filename: "#{activity1.title}.png", content_type: "image/png")
 activity1.save!
 
+
+file = URI.open("https://res.cloudinary.com/diuukus6j/image/upload/v1701818958/portalDoMilenio_m1nz0i.jpg")
+activity11 = Activity.new(
+ city: city10,
+ user: user1,
+ title: "Millennium Portal",
+ subtitle: "Millennium Portal with your Pet",
+ address: "Av. Cap. Ene Garcês - Centro, Boa Vista - RR",
+ details: "Visit the Millennium Portal and discover the fascinating story behind this portal.",
+ response: nil,
+)
+activity11.photo.attach(io: file, filename: "#{activity11.title}.png", content_type: "image/png")
+activity11.save!
+
+
+file = URI.open("https://res.cloudinary.com/diuukus6j/image/upload/v1701819454/selvinha_gynuem.jpg")
+activity12 = Activity.new(
+ city: city10,
+ user: user1,
+ title: "Amazon jungle",
+ subtitle: "Amazon jungle your pet",
+ address: "R. Castelo Branco, 236 - São Vicente, Boa Vista - RR",
+ details: "A spacious place with many attractions, ideal for your pet to have fun.",
+ response: nil,
+)
+activity12.photo.attach(io: file, filename: "#{activity12.title}.png", content_type: "image/png")
+activity12.save!
+
+
+file = URI.open("https://res.cloudinary.com/diuukus6j/image/upload/v1701819993/parqueAnau%C3%A1_mtzlh9.jpg")
+activity13 = Activity.new(
+ city: city10,
+ user: user1,
+ title: "Anaua Park",
+ subtitle: "Cultural night with your pet",
+ address: "Av. Brg. Eduardo Gomes, 2207-2109 - Dos Estados, Boa Vista - RR",
+ details: "A natural and cultural environment for you and your pet.",
+ response: nil,
+)
+activity13.photo.attach(io: file, filename: "#{activity13.title}.png", content_type: "image/png")
+activity13.save!
+
+
+file = URI.open("https://res.cloudinary.com/diuukus6j/image/upload/v1701820682/parqueDospapagaios_b2qmso.webp")
+activity13 = Activity.new(
+ city: city10,
+ user: user1,
+ title: "Bosque dos Papagaios",
+ subtitle: "Bosque dos Papagaios Ecological Park",
+ address: "R. Moisés de Souza Cruz - Paraviana, Boa Vista - RR",
+ details: "Perfect place for you and yours to connect with nature.",
+ response: nil,
+)
+activity13.photo.attach(io: file, filename: "#{activity13.title}.png", content_type: "image/png")
+activity13.save!
+
+
+file = URI.open("https://res.cloudinary.com/diuukus6j/image/upload/v1701820943/SerraDoTepequem_q7pvr0.webp")
+activity14 = Activity.new(
+ city: city10,
+ user: user1,
+ title: "Tepequem Mountains",
+ subtitle: "Tepequem Mountains",
+ address: "The Municipality of Amajari, in the northern state of Roraima, at the extreme north of Brazil",
+ details: "Explore the municipality of Amajari in the state of Roraima in northern Brazil, known for its stunning natural landscapes and rich local culture in the far north of the country.",
+ response: nil,
+)
+activity14.photo.attach(io: file, filename: "#{activity14.title}.png", content_type: "image/png")
+activity14.save!
+
+
 ########################################
 puts "Creating Activities in São Paulo"
 
-file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701539147/casa_5_kktios.webp")
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701818871/prac%CC%A7a_hora%CC%81cio_sabino_jzgr9p.jpg")
 activity2 = Activity.new(
   city: city7,
   user: user1,
@@ -435,6 +506,88 @@ activity2 = Activity.new(
 )
 activity2.photo.attach(io: file, filename: "#{activity2.title}.png", content_type: "image/png")
 activity2.save!
+
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701818874/Parque_Ibirapuera_ktczk2.jpg")
+activity21 = Activity.new(
+  city: city7,
+  user: user1,
+  title: "Ibirapuera Park",
+  subtitle: "Entertainment and culture for you and your dogs",
+  address: "Avenida Ibirapuera - São Paulo, SP - Brazil",
+  details: "The biggest park in São Paulo, with a huge space for dogs.",
+  response: nil,
+)
+activity21.photo.attach(io: file, filename: "#{activity21.title}.png", content_type: "image/png")
+activity21.save!
+
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701819013/coruja_x0nxzq.jpg")
+activity22 = Activity.new(
+  city: city7,
+  user: user1,
+  title: "Coruja Park",
+  subtitle: "Broad space for dogs to run around",
+  address: "Avenida Ibirapuera - São Paulo, SP - Brazil",
+  details: "Broad space for dogs to run around",
+  response: nil,
+)
+activity22.photo.attach(io: file, filename: "#{activity22.title}.png", content_type: "image/png")
+activity22.save!
+
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701819140/a%CC%81gua_branca_goyftd.jpg")
+activity23 = Activity.new(
+  city: city7,
+  user: user1,
+  title: "Água Branca Park",
+  subtitle: "Full of trees and flowers to walk your dog",
+  address: "Avenida Água Branca - São Paulo, SP - Brazil",
+  details: "Full of trees and flowers to walk your dog",
+  response: nil,
+)
+activity23.photo.attach(io: file, filename: "#{activity23.title}.png", content_type: "image/png")
+activity23.save!
+
+
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701819347/parque_augusta_we56sk.webp")
+activity24 = Activity.new(
+  city: city7,
+  user: user1,
+  title: "Augusta Park",
+  subtitle: "A green paradise for you and your pet in downton area",
+  address: "Avenida Água Branca - São Paulo, SP - Brazil",
+  details: "A green paradise for you and your pet in downton area",
+  response: nil,
+)
+activity24.photo.attach(io: file, filename: "#{activity24.title}.png", content_type: "image/png")
+activity24.save!
+
+
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701822140/ativida_vila_lobos_hbqkhd.jpg")
+activity25 = Activity.new(
+  city: city7,
+  user: user1,
+  title: "Villa Lobos Park",
+  subtitle: "A beautiful paradise for you and your pet",
+  address: "Avenida Água Branca - São Paulo, SP - Brazil",
+  details: "A beautiful paradise for you and your pet",
+  response: nil,
+)
+activity25.photo.attach(io: file, filename: "#{activity25.title}.png", content_type: "image/png")
+activity25.save!
+
+
+
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1701822144/Petz_hfkgvf.jpg")
+activity26 = Activity.new(
+  city: city7,
+  user: user1,
+  title: "Petz Store",
+  subtitle: "Ads: The place to buy anything and everything for your pet",
+  address: "Avenida Água Branca - São Paulo, SP - Brazil",
+  details: "Ads: The place to buy anything and everything for your pet",
+  response: nil,
+)
+activity26.photo.attach(io: file, filename: "#{activity26.title}.png", content_type: "image/png")
+activity26.save!
 
 
 
