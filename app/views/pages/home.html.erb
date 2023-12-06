@@ -115,7 +115,7 @@
 <div class="container_activities">
       <h1>Most upvoted <strong>activities</strong></h1>
   <div class="parent" p-5 >
-        <% @activities.first(10).each do |a| %>
+        <% @activities.first(12).each do |a| %>
         <div class="card-product mt-2">
           <%= cl_image_tag a.photo.key, height: 400, width: 500, crop: :fill if a.photo.attached? %>
 
