@@ -19,13 +19,14 @@
 }
 
 .user-pets {
-  margin-top: 30px; /* Adjust as needed for spacing between users and pets */
-  margin-bottom: 20px; /* Adjust as needed for spacing between users */
+  margin-top: 10px; /* Adjust as needed for spacing between users and pets */
+  margin-bottom: 10px; /* Adjust as needed for spacing between users */
 }
 
 .pet-list {
   display: flex;
   flex-wrap: wrap;
+  height: 150px;
 }
 
 .pet-item {
