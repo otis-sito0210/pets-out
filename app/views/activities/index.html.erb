@@ -5,7 +5,7 @@
 <div class="container mt-3 p-3">
   <% @activities.first(30).each do |activity| %>
     <div class="card-product mt-2">
-      <img class="lightbox-trigger" <%= cl_image_tag activity.photo.key, height: 400, width: 500, crop: :fill if activity.photo.attached? %>
+       <%= cl_image_tag activity.photo.key, class: "lightbox-trigger", height: 400, width: 500, crop: :fill if activity.photo.attached?  %>
 
       <div class="card-product-infos">
         <h2><%= activity.title %> </h2>
