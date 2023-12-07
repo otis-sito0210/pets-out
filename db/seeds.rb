@@ -58,7 +58,7 @@ pet1.save!
 file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1699108428/production/sc7lnmuzjsrqhd55susft20ohx9j.jpg")
 pet2 = Pet.new(
   user: user1,
-  name: "Quuenie",
+  name: "Queenie",
   age: 12,
   size: "Big",
   breed: "Borzoi",
@@ -67,7 +67,7 @@ pet2 = Pet.new(
 pet2.photo.attach(io: file, filename: "#{pet2.name}.png", content_type: "image/png")
 pet2.save!
 
-file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1698524370/production/sv0egsvnr2bjuud7yu3zhyy0dbiq.jpg")
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1699123976/production/7g6isk0wj0z45i5a4ec02y83w0eq.jpg")
 pet3 = Pet.new(
   user: user2,
   name: "Sansa",
@@ -91,7 +91,7 @@ pet4 = Pet.new(
 pet4.photo.attach(io: file, filename: "#{pet4.name}.png", content_type: "image/png")
 pet4.save!
 
-file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1698524370/production/sv0egsvnr2bjuud7yu3zhyy0dbiq.jpg")
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1699108325/production/amljy8y0k3i07fc83yfa2wj771vs.jpg")
 pet5 = Pet.new(
   user: user3,
   name: "Dobly",
@@ -103,7 +103,7 @@ pet5 = Pet.new(
 pet5.photo.attach(io: file, filename: "#{pet5.name}.png", content_type: "image/png")
 pet5.save
 
-file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1698524370/production/sv0egsvnr2bjuud7yu3zhyy0dbiq.jpg")
+file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1698527348/production/2jsk1rum6rqwm1lkosfzgd6h6ard.jpg")
 pet6 = Pet.new(
   user: user3,
   name: "Jão",
