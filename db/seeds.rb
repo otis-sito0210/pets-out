@@ -103,13 +103,13 @@ pet5 = Pet.new(
 pet5.photo.attach(io: file, filename: "#{pet5.name}.png", content_type: "image/png")
 pet5.save
 
-file = URI.open("https://res.cloudinary.com/dxymj7m5b/image/upload/v1698527348/production/2jsk1rum6rqwm1lkosfzgd6h6ard.jpg")
+file = URI.open("https://res.cloudinary.com/diuukus6j/image/upload/v1701990729/Lily_wg9ykv.jpg")
 pet6 = Pet.new(
   user: user3,
-  name: "Jão",
+  name: "Lily",
   age: 5,
   size: "Small",
-  breed: "Stray dog",
+  breed: "Yorkshire Terrier",
   details: "A playful dog, that interacts with everyone and every pet, big or small. What he really loves is a belly rub."
   )
 pet6.photo.attach(io: file, filename: "#{pet6.name}.png", content_type: "image/png")
